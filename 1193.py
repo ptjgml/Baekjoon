@@ -18,25 +18,20 @@
 # 첫째 줄에 분수를 출력한다.
 
 X = int(input())
-total_lst = []
 
-n = 0
+n = 1
 
-while True:
-    lst = []
-    if n % 2 ==0:
-        for i in range(n+1):
-            lst.append((n-i,i))
-    else:
-        for i in range(n+1):
-            lst.append((i, n-i))
-    n = n+1
-    total_lst.append(lst)
-    if n > 5:
-        break
-    else:
-        continue
-    
-result = 
+while X > n:
+    X -= n
+    n += 1
+
+if n % 2 == 0:
+    a = X
+    b = n - X +1
+else:
+    a = n - X + 1
+    b = X
+
+print(f'{a}/{b}')
 
 
