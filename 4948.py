@@ -14,18 +14,30 @@
 
 # 출력
 # 각 테스트 케이스에 대해서, n보다 크고, 2n보다 작거나 같은 소수의 개수를 출력한다.
-while True:
-    n = int(input())
-    count = 0
+
+import sys
+
+while True:       
+    n = int(sys.stdin.readline())
+
     if n >= 1:
-        for num in range(n+1, 2*n+1):
-            skip = 0
-            for check in range(2, num):
-                if num % check == 0:
-                    skip += 1
-                    break
-            if skip == 0:
+
+        check_lst = [0] * (2*n +1)
+        for i in range(n+1):
+            check_lst[i] = 1
+
+        for i in range(2, int((n*2) ** 0.5)+1):
+            for j in range(i*2, (n*2)+1, i):
+                check_lst[j] = 1
+        count = 0
+        for k in range(n, (2*n)+1):
+            if check_lst[k] == 0:
                 count += 1
-        print(count)
+        print(count)   
+        
     else:
         break
+
+
+
+
