@@ -30,21 +30,6 @@
 
 
 
-# 백준 2587 대표값2
-import sys
-
-lst = []
-sumV = 0
-avgV = 0
-for i in range(5):
-    num = int(sys.stdin.readline())
-    lst.append(num)
-    sumV += num
-
-lst.sort()
-print(int(sumV / 5))
-print(lst[5//2])
-
 
 
 

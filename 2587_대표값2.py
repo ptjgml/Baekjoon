@@ -17,3 +17,16 @@
 # 첫째 줄에는 평균을 출력하고, 둘째 줄에는 중앙값을 출력한다. 평균과 중앙값은 모두 자연수이다.
 
 
+import sys
+
+lst = []
+sumV = 0
+avgV = 0
+for i in range(5):
+    num = int(sys.stdin.readline())
+    lst.append(num)
+    sumV += num
+
+lst.sort()
+print(int(sumV / 5))
+print(lst[5//2])
