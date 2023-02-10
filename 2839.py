@@ -16,21 +16,66 @@
 # 상근이가 배달하는 봉지의 최소 개수를 출력한다. 만약, 정확하게 N킬로그램을 만들 수 없다면 -1을 출력한다.
 
 
+# ----------------------- 틀린 코드 -----------------------------
+# lst = []
+# N = int(input())
 
-lst = []
+# for a in range(1000):
+#     for b in range(1700):
+
+#         if (5*a) + (b*3) == N:
+#             lst.append(a+b)
+
+#         else:
+#             continue
+
+# if len(lst)==0:
+#     print(-1)
+
+# else:
+#     print(min(lst)) 
+# ----------------------------------------------------------------
+
+
 N = int(input())
+count = 0
 
-for a in range(1000):
-    for b in range(1700):
+while N > 0:
 
-        if (5*a) + (b*3) == N:
-            lst.append(a+b)
+    if N % 5 == 0:
+        a = N // 5
+        count += a
+        break
 
-        else:
-            continue
+    elif N >=3:
+        count += 1
+        N = N - 3
+    
+    else:
+        count = -1
+        break
 
-if len(lst)==0:
-    print(-1)
+print(count)
 
-else:
-    print(min(lst)) 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
