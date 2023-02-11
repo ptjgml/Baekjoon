@@ -56,14 +56,14 @@ for i in range(line):
         w_lst.append(num)
 
 w_lst.append(w)
-w_lst = list(sorted(set(w_lst)))
+w_lst = list(sorted(set(w_lst)))        # 자르는 곳이 종이의 경계값일 수 있으므로 set로 중복값 제거
 h_lst.append(h)
 h_lst = list(sorted(set(h_lst)))
 
 maxV = 0
 for i in range(1,len(w_lst)):
     for j in range(1, len(h_lst)):
-        area = (w_lst[i] - w_lst[i-1]) * (h_lst[j] - h_lst[j-1])
+        area = (w_lst[i] - w_lst[i-1]) * (h_lst[j] - h_lst[j-1])        # 종이를 좌표로 생각하여 각 지점에서 앞 지점을 빼서 가로 세로 곱함
         if area > maxV:
             maxV = area
 print(maxV)
