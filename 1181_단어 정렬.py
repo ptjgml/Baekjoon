@@ -16,17 +16,34 @@
 # 조건에 따라 정렬하여 단어들을 출력한다.
 
 
+# import sys
+# N = int(input())
+
+# lst = []
+# length_lst = [0] * N
+# for i in range(N):
+#     word = input()
+#     word_length = len(word)
+#     lst.append((word, word_length))
+
+# for i in N:
+#     lst.sort(key = lambda x : lst[i][1])
+
+
+
+
 import sys
 N = int(input())
 
 lst = []
-length_lst = [0] * N
 for i in range(N):
     word = input()
     lst.append(word)
-    length_lst[i] = len(word)
 
-print(lst)
-print(length_lst)
-length_lst.sort()
-print(length_lst)
+sort_set = list(set(lst))
+
+sort_set.sort()     # 알파벳 순으로 정렬
+sort_set.sort(key = lambda x : len(x))  # 길이 순으로 정렬
+
+for word in sort_set:
+    print(word)
