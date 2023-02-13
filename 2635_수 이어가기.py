@@ -30,7 +30,7 @@
 # 둘째 줄에 그 최대 개수의 수들을 차례대로 출력한다. 
 # 이들 수 사이에는 빈칸을 하나씩 둔다.
 
-
+from pprint import pprint
 N = int(input())
 rst_lst = []
 
@@ -41,33 +41,22 @@ for i in range(int(N // 2), N+1):
     c = a - b   
     
     count += 1
-    lst = []
+    lst = [a, b]
 
-    while c > 0:
+    while c >= 0:
         count += 1    
-        lst.append(a)
+        lst.append(c)
         a, b = b, c
         c = a - b
         continue
     rst_lst.append({count:lst})
-# print(rst_lst)
+pprint(rst_lst)
+maxV = 0
+for i in range(len(rst_lst)):
+    for key in rst_lst[i]:
+        if key > maxV:
+            maxV = key
+            result = rst_lst[i][maxV]
 
-maxV = rst_lst[0].keys()
-
-for j in range(len(rst_lst)):
-    if rst_lst[j].keys() > maxV:
-        maxV = rst_lst[j].keys()
-        idx = j
 print(maxV)
-print(*rst_lst[idx][maxV])
-
-# maxV = max(rst_lst.keys())
-# print(maxV)
-# print(*rst_lst[maxV])
-
-
-
-
-
-
-
+print(*result)
