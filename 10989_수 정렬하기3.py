@@ -11,6 +11,24 @@
 # 첫째 줄부터 N개의 줄에 오름차순으로 정렬한 결과를 한 줄에 하나씩 출력한다.
 
 
+'''
+<틀린 코드>
+import sys
+N = int(input())
+lst = [0] * N
+
+for i in range(N):
+    lst[i] = int(sys.stdin.readline())
+
+lst.sort()
+for j in lst:
+    print(j)
+    
+- 리스트를 이용하면 메모리 초과가 나므로 
+- 딕셔너리를 이용하여 최대한 적은수를 저장해놓고
+- 해당 수가 입력된 수를 count 하여 출력한다.
+'''
+
 import sys
 N = int(input())
 dic = {}
