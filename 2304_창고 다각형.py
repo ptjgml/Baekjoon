@@ -41,41 +41,31 @@ lst = []
 for i in range(N):
     L, H = map(int,input().split())
     lst.append((L, H))
+lst.sort()
 
 maxH = lst[0][1]
 maxL = lst[0][0]
 for j in range(N):
-    if lst[j][1] > maxH:
+    if lst[j][1] >= maxH:
         maxH = lst[j][1]
         maxL = lst[j][0]
         maxIdx = j
-
-size = 0
+size = maxH
 
 first_H = lst[0][1]
-for k in range(N-1):
-    if lst[k][0] < maxL:
-        if first_H < lst[k+1][1]:
-            current_size = first_H * (lst[k+1][0] - lst[k][0])
-            size += current_size
-            first_H = lst[k+1][1]
-        else:
-            current_size = first_H * (lst[k+1][0] - lst[k][0])
-            size += current_size
-
+for k in range(maxIdx):
+    current_size_left = first_H * (lst[k+1][0] - lst[k][0])
+    size += current_size_left
+    if first_H < lst[k+1][1]:
+        first_H = lst[k+1][1]
+    
 last_H = lst[-1][1]
-for l in range(N-1, 0, -1):
-    if lst[l][0] > maxL:
-        if last_H < lst[l-1][1]:
-            current_size = last_H * (lst[l][0] - lst[l-1][0])
-            size += current_size
-            first_H = lst[l-1][1]
-        else:
-            current_size = last_H * (lst[l][0] - lst[l-1][0])
-            size += current_size
+for l in range(N-1, maxIdx, -1):
+    current_size_right = last_H * (lst[l][0] - lst[l-1][0])
+    size += current_size_right
+    if last_H < lst[l-1][1]:
+        last_H = lst[l-1][1]
 
 print(size)
-
-
 
 
