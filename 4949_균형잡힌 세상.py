@@ -21,43 +21,78 @@
 # 각 줄마다 해당 문자열이 균형을 이루고 있으면 "yes"를, 아니면 "no"를 출력한다.
 
 
-def check(input_s):
-    stack = []
+# def check(input_s):
+#     stack = []
 
-    for i in range(len(input_s)):
-        if input_s[i] == '.':
-            break
-        elif input_s[i].isalpha() or input_s[i] == ' ':
-            continue
+#     for i in range(len(input_s)):
+#         if input_s[i] == '.':
+#             break
+#         # elif input_s[i].isalpha() or input_s[i] == ' ':
+#         #     continue
 
-        elif input_s[i] == '(' or input_s[i] == '[':
-            stack.append(input_s[i])
+#         elif input_s[i] == '(' or input_s[i] == '[':
+#             stack.append(input_s[i])
 
-        elif input_s[i] == ')':
-            if stack and stack[-1] == '(':
-                stack.pop()
-            else:
-                return 'no'
+#         elif input_s[i] == ')':
+#             if stack and stack[-1] == '(':
+#                 stack.pop()
+#             else:
+#                 return 'no'
 
-        elif input_s[i] == ']':
-            if stack and stack[-1] == '[':
-                stack.pop()
-            else:
-                return 'no'
-    return 'yes'
+#         elif input_s[i] == ']':
+#             if stack and stack[-1] == '[':
+#                 stack.pop()
+#             else:
+#                 return 'no'
+#     return 'yes'
+
+# while True:
+#     sentence = list(input().rstrip())
+#     print(check(sentence))
+#     if len(sentence) == 1 and sentence[-1] == '.':
+#         break
+        
+
+
+
+
+
+
+
+
 
 while True:
     sentence = list(input().rstrip())
-    print(check(sentence))
+    if len(sentence) == 1 and sentence[-1] == '.':
+        break
+        
+    stack = []
+    result = 'yes'
+    for i in range(len(sentence)):
+        if sentence[i] == '.':
+            break
+        # elif input_s[i].isalpha() or input_s[i] == ' ':
+        #     continue
 
+        elif sentence[i] == '(' or sentence[i] == '[':
+            stack.append(sentence[i])
 
+        elif sentence[i] == ')':
+            if stack and stack[-1] == '(':
+                stack.pop()
+            else:
+                result = 'no'
 
-
-
-
-
-
-
+        elif sentence[i] == ']':
+            if stack and stack[-1] == '[':
+                stack.pop()
+            else:
+                result =  'no' 
+    
+    if stack:
+        result = 'no'
+        
+    print(result)
 
 
 
