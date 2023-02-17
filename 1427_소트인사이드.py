@@ -9,23 +9,23 @@
 # 출력
 # 첫째 줄에 자리수를 내림차순으로 정렬한 수를 출력한다.
 
-# N = input()
-# lst = []
+N = input()
+lst = []
 
-# for i in N:
-#     lst.append(i)
+for i in N:
+    lst.append(i)
 
-# for i in range(len(lst)-1,0,-1):
-#     minV = int(lst[i])
-#     for j in range(i+1):
-#         if int(lst[j]) <= minV:
-#             minV = int(lst[j])
-#             minIdx = j
-#     lst[minIdx], lst[i] = lst[i], lst[minIdx]
+for i in range(len(lst)-1,0,-1):
+    minV = int(lst[i])
+    for j in range(i+1):
+        if int(lst[j]) <= minV:
+            minV = int(lst[j])
+            minIdx = j
+    lst[minIdx], lst[i] = lst[i], lst[minIdx]
 
 
-# num = ''.join(lst)
-# print(num)
+num = ''.join(lst)
+print(num)
 
 
 
