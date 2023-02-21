@@ -14,23 +14,23 @@
 # 출력
 # 첫째 줄에 연산을 하는 횟수의 최솟값을 출력한다.
 
+def div(N, count):
+    while N > 1:
+        if N % 3 == 0:
+            count += 1
+            N = N / 3
+        elif N % 2 == 0:
+            count += 1
+            N = N / 2
+    return count
 
 import sys
 N = int(sys.stdin.readline())
-N = N -1
-count = 0
-while N > 1:    
-    if N % 3 != 0 and N % 2 != 0:
-        count  += 1
-        N -= 1
 
-    elif N % 3 ==0:
-        count += N / 3
-        break
-    
-    elif N % 2 == 0:
-        count += N / 2
-        break
-print(int(count))
+if N % 2 == 0:
+    result = div(N, 0)
+else:
+    result = div(N-1, 1)
 
+print(result)
 
