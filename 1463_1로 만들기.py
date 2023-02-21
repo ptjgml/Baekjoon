@@ -24,13 +24,52 @@ def div(N, count):
             N = N / 2
     return count
 
+def three(N):
+    count = 0
+    if N % 3 == 0:
+        count = 1
+        N = N // 3
+    else:
+        N = N -1
+        count += 1
+    if dp[N] != 0:
+        count += dp[N]
+    else:
+        return count
+    return count
+        
+def two(N):
+    count = 0
+    if N % 2 == 0:
+        count = 1
+        N = N // 2
+    else:
+        N = N -1
+        count += 1
+    if dp[N] != 0:
+        count += dp[N]
+    else:
+        return count
+    return count
+
 import sys
 N = int(sys.stdin.readline())
+<<<<<<< HEAD
 
 if N % 2 == 0:
     result = div(N, 0)
 else:
     result = div(N-1, 1)
+=======
+dp = [0] * (N+1)
+dp[1] = 0
+
+for i in range(2, N+1):
+    dp[i] = min(dp[i-1]+1, two(i), three(i))
+
+print(dp[N])
+
+>>>>>>> b7bee776beaad7a520d8c9eb86843c9aa5e3afaf
 
 print(result)
 
