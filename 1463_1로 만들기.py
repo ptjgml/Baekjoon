@@ -15,22 +15,43 @@
 # 첫째 줄에 연산을 하는 횟수의 최솟값을 출력한다.
 
 
+def three(N):
+    count = 0
+    if N % 3 == 0:
+        count = 1
+        N = N // 3
+    else:
+        N = N -1
+        count += 1
+    if dp[N] != 0:
+        count += dp[N]
+    else:
+        return count
+    return count
+        
+def two(N):
+    count = 0
+    if N % 2 == 0:
+        count = 1
+        N = N // 2
+    else:
+        N = N -1
+        count += 1
+    if dp[N] != 0:
+        count += dp[N]
+    else:
+        return count
+    return count
+
 import sys
 N = int(sys.stdin.readline())
-N = N -1
-count = 0
-while N > 1:    
-    if N % 3 != 0 and N % 2 != 0:
-        count  += 1
-        N -= 1
+dp = [0] * (N+1)
+dp[1] = 0
 
-    elif N % 3 ==0:
-        count += N / 3
-        break
-    
-    elif N % 2 == 0:
-        count += N / 2
-        break
-print(int(count))
+for i in range(2, N+1):
+    dp[i] = min(dp[i-1]+1, two(i), three(i))
+
+print(dp[N])
+
 
 
