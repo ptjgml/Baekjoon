@@ -35,43 +35,57 @@
 # 출력
 # 각 테스트 케이스에 대해 필요한 최소의 배추흰지렁이 마리 수를 출력한다.
 
-T = int(input())
 
+import sys
 di = [-1, 1, 0, 0]
 dj = [0, 0, -1, 1]
 
+def bfs(s_y, s_x):
+
+    Q.append((s_y, s_x))
+    visited[s_y][s_x] = True
+    check[s_y][s_x] = 0
+    count = 0
+    while Q:
+        v_y, v_x = Q.pop(0)
+        for k in range(4):
+            newR = v_y + di[k]                    
+            newC = v_x + dj[k]
+
+            if 0 <= newR < N and 0<= newC < M and visited[newR][newC] == False and check[newR][newC] == 1:
+                Q.append((newR,newC))
+                visited[newR][newC] = True
+                check[newR][newC] = 0
+    else:
+        count += 1
+    # if not Q and cabbage:
+    #     v_y, v_x = cabbage.pop(0)
+    #     Q.append((v_y, v_x))
+                
+    return count
+
+T = int(sys.stdin.readline())
+
 for t in range(T):
-    M, N, K = map(int, input().split())
+    M, N, K = map(int, sys.stdin.readline().split())
 
-    cabbage = [[0]*M for _ in range(N)]
-    bug = 1
+    # cabbage = []
+    check = [[0] * M for _ in range(N)]
+    count = 0
+    Q = []
+    visited = [[False] * M for _ in range(N)]
 
-    for k in range(K):
+    for i in range(K):
         x, y = map(int, input().split())
+        # cabbage.append((y, x))
+        check[y][x] = 1
 
-        cabbage[y][x] = 1
-    
-    for row in range(N):
-        for col in range(M):
-            stack = []
-            count = 4
-            while stack:
-                for k in range(4):
-                    newR = row + di[k]
-                    newC = col + dj[k]
-
-                    if 0 <= newR < N and 0 <= newC < M and cabbage[newR][newC] == 1:
-                        stack.pop()
-                        stack.append((newR,newC))
-                        row = newR
-                        col = newC
-                        count += 1
-                    elif 0<= newR<N and 0 <= newC < M and cabbage[newR][newC] == 0:
-                        stack.pop()
-                        count -= 1
-                if count > 0:
-                    bug += 1
-                
-                
-    print(bug)
-
+    # for i in cabbage:
+    #     y, x = i[0], i[1]
+    #     if check[y][x] == 1:
+    #         count = count + bfs(y, x)
+    for i in range(M):
+        for j in range(N):
+            if check[j][i] == 1:
+                count = count+bfs(j,i)
+    print(count)

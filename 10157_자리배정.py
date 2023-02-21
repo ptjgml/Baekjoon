@@ -8,7 +8,7 @@ lst = [[0]*R for _ in range(C)]
 lst[0][0] = 1
 
 if K > (C*R):
-    result = 0
+    print(0)
 
 else:
     row = 0
@@ -18,7 +18,6 @@ else:
 
     while True:        
         if count == K:
-            result = (row+1, col+1)
             break
 
         newR = row + di[i]
@@ -34,7 +33,7 @@ else:
             count += 1   
         
 
-print(result[0], result[1])
+    print(row+1, col+1)
 
 
 

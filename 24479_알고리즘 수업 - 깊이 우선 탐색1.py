@@ -62,35 +62,73 @@ for j in range(1, N+1):
 
 
 
-def dfs(V, E, R):   # V = stack, E = lst
-    V.append(R)
-    visited[R] = True
 
-    while V:
-        v = V.pop()
-        for i in range(N):
-            if E[v][i] == 1 and visited[i] == False:
-                V.append(i)
-                visited[i] = True
-    
-    return visited
+# ---- dfs 방법 -----
+# def dfs(R):
+#     count = [0] * (N+1)
+#     v = R
+#     stack.append(v)
+#     visited[v] = True
+#     num = 1
+
+#     count[v] = num
+#     while stack:
+#         for w in adjL[v]:
+#             if visited[w] == False:
+#                 visited[w] = True
+#                 v = w       
+#                 stack.append(v)
+#                 num += 1
+#                 count[v] = num
+#                 break
+#             else:
+#                 if stack:
+#                     v = stack.pop()
+#     return count[1:]
+
+# N, M, R = map(int, input().split())
+# adjL = [[] for _ in range(N+1)]
+# stack = []
+# visited = [False] * (N+1)
+# for i in range(M):
+#     u, v = map(int, input().split())
+#     adjL[u].append(v)
+#     adjL[v].append(u)
+#     adjL[u].sort()
+#     adjL[v].sort()
+
+# result = dfs(R)
+# for i in result:
+#     print(i)
 
 
-N, M, R = map(int, input().split())     # N : , M : , R : 
-visited = [False] * (N+1)   # 방문했었는지 체크
-lst = [[0]*(N+1) for _ in range(N+1)]   # 연결된 정점 표시할 리스트
-stack = []  # 시작 노드 체크할 스택
+
+
+
+# ---- 재귀 방법 -----
+import sys
+sys.setrecursionlimit(10**9)
+def dfs(v):    
+    global num
+    visited[v] = num
+    for w in adjL[v]:
+        if visited[w] == 0:  
+            num += 1
+            dfs(w)
+
+N, M, R = map(int, sys.stdin.readline().split())
+adjL = [[] for _ in range(N+1)]
+visited = [0] * (N+1)    
+num = 1
 
 for i in range(M):
-    u, v = map(int, input().split())    # 방문할 정점들
-    lst[u][v] = 1   # 양방향이므로 u에서 v 갔을 때
-    lst[v][u] = 1   # v에서 u 갔을 때 모두 1로 체크
+    u, v = map(int, sys.stdin.readline().split())
+    adjL[u].append(v)   # 양 방향이므로 다 append
+    adjL[v].append(u)
+for j in adjL:
+    j.sort()    # 
 
-dfs(stack, lst, R)
-
+dfs(R)
 for i in range(1, N+1):
-    if visited[i] == 1:
-        print(i)
-    else:
-        print(0)
+    print(visited[i])
 
