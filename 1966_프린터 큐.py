@@ -25,29 +25,33 @@
 # 출력
 # 각 테스트 케이스에 대해 문서가 몇 번째로 인쇄되는지 출력한다.
 
-
 T = int(input())
 
 for i in range(T):
     N, M = map(int, input().split()) # N은 문서의 개수, M은 궁금한 문서가 몇번째에 놓여 있는지
-    important = list(map(int, input().split()))
+    Q = list(map(int, input().split())) 
+    count = 0
 
-    Queue = [0] * N
-    for i in range(N):
-        Queue[i] = (i,important[i])
-    print(Queue)
+    index = [0] * N
+    index[M] = True   # 뽑고자 하는 문서의 인덱스 값만 True으로 표시
+
+    while Q:
+        maxV = max(Q)   # Q에서 최대값 뽑기
+        if Q[0] == maxV: # 가장 앞에 있는 문서가 최대값이면
+            count += 1  # count +1
+            if index[0] == True:   # 가장 앞에 있는 문서가 뽑고자 하는 문서이면
+                print(count)
+                break
+            else:       # 가장 앞에 있는 문서가 뽑고자 하는 문서가 아니면
+                Q.pop(0)    # 최대값을 Q에서 뽑기만 함
+                index.pop(0)    # 인덱스에서도 같이 제거
+
+        else:   # 가장 앞에 있는 문서가 최대값이 아니면
+            Q.append(Q.pop(0))  # 앞에서 뽑아서 뒤로 보냄
+            index.append(index.pop(0))  # 인덱스에서도 같이 이동
 
 
-    while True:
-        max_important_idx = important.index(max(important))     # 가장 중요도가 높은 문서의 인덱스 값
-
-        Queue.pop(0,max_important_idx)
-        Queue.append(0, max_important_idx)
-        print(Queue)
-        break
-
-
-
+        
 
 
 

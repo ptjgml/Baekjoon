@@ -31,6 +31,8 @@
 # 철수가 "빙고"를 외치게 되는지 출력한다.
 
 # 2578 빙고
+
+import sys
 def check(num):               # 불린 수를 0으로 체크 할 check 함수
     for n in range(5):
         for m in range(5):
@@ -80,7 +82,7 @@ def bin(bingo):             # 빙고가 됐는지 확인 할 bin 함수
    
 
 
-lst = [list(map(int, input().split())) for _ in range(10)]  # 입력을 받을 리스트
+lst = [list(map(int, sys.stdin.readline().split())) for _ in range(10)]  # 입력을 받을 리스트
 bingo = lst[0:5]        # lst에서 1~5번째 줄 bingo에 저장
 call = sum(lst[5:], [])          # lst에서 6~10번째 줄 call에 저장
 count = 0               # 빙고 선이 몇 개 그어지는지 count
@@ -89,9 +91,7 @@ call_count = 0          # 사회자가 몇 번째 수를 부르는지 count
 for num in call:        
     call_count += 1
     check(num)
-    # print(bingo)
     count = bin(bingo)
-    # print(count)
     if count >= 3:
         print(call_count)
         break
