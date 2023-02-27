@@ -32,7 +32,30 @@
 N = int(input())
 lst = [list(map(int, input().split())) for _ in range(N)]
 
-print(lst)
+color = [[0]*1001 for _ in range(1001)]
+
+for i in range(N):
+    row = lst[i][0]
+    col = lst[i][1]
+
+    newR = row + lst[i][2] - 1
+    newC = col + lst[i][3] - 1
+
+    for n in range(row, newR+1):
+        for m in range(col, newC+1):
+            if color[n][m] != i+1:
+                color[n][m] = i+1
+
+for a in range(1,N+1):
+    count = 0
+    for b in color:
+        count += b.count(a)
+    print(count)
+
+
+
+
+
 
 
 

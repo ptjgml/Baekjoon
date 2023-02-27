@@ -25,3 +25,51 @@
 #
 # 출력
 # 첫째 줄에 트리의 지름을 출력한다.
+
+def find(p, c):
+    stack = []
+    sumV = 0
+
+    stack.append(p)
+
+n = int(input())
+lst = [[] for _ in range(n+1)]
+
+maxNode = 0
+maxEdge = 0
+for i in range(n-1):
+    p, c, edge = map(int, input().split())
+    lst[p].append((c, edge))
+    if edge > maxEdge:
+        maxEdge = edge
+        maxChild = c
+        maxParent = p
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
