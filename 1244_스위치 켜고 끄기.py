@@ -73,13 +73,13 @@ for i in range(student_count):
                 status[n] = 1
             else:
                 status[n] = 0
-    
+
     else:
         if status[num] == 0:
             status[num] = 1
         else:
             status[num] = 0
-        
+
         while True:
             if num-plus >= 1 and num+plus <= len(status)-1 and status[num-plus] == status[num+plus]:
                 if status[num-plus] == 0:
@@ -103,7 +103,12 @@ for i in range(len(status)):
     if count == 20:
         print()
         count = 0
-        
+
+
+
+
+
+
 
 
 

@@ -26,24 +26,25 @@
 # 출력
 # 첫째 줄에 트리의 지름을 출력한다.
 
-def find(p, c):
-    stack = []
+def bfs(p, c):
+    Q = []
     sumV = 0
 
-    stack.append(p)
+    Q.append(p)
+    for i in range(n):
+        if
 
 n = int(input())
 lst = [[] for _ in range(n+1)]
+visitied = [False] * (n+1)
 
-maxNode = 0
-maxEdge = 0
 for i in range(n-1):
     p, c, edge = map(int, input().split())
     lst[p].append((c, edge))
-    if edge > maxEdge:
-        maxEdge = edge
-        maxChild = c
-        maxParent = p
+    lst[c].append((p, edge))
+
+
+
 
 
 
