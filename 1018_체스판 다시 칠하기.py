@@ -21,27 +21,61 @@
 # 출력
 # 첫째 줄에 지민이가 다시 칠해야 하는 정사각형 개수의 최솟값을 출력한다.
 
+def first_B(i, j, cnt, check_board):
+    if check_board[i][j] == 'W':
+        cnt += 1
+    check_board[i][j] = 'B'
+    return check(i, j, cnt, check_board)
+
+
+def first_W(i, j, cnt, check_board):
+    if check_board[i][j] == 'B':
+        cnt += 1
+    check_board[i][j] = 'W'
+    return check(i, j, cnt, check_board)
+
+
+def check(i, j, cnt, check_board):
+    for n in range(i, i + 8):
+        for m in range(j, j + 8):
+            for k in range(4):
+                newR = n + di[k]
+                newC = m + dj[k]
+
+                if check_board[n][m] == 'B':  # 내가 'B'인데
+                    if i <= newR < i + 8 and j <= newC < j + 8:
+                        if check_board[newR][newC] == 'B':  # 내 상하좌우에 'B'가 있으면
+                            cnt += 1  # new_count +1
+                            check_board[newR][newC] = 'W'  # 중복되어 계산되지 않도록 'W'로 바꿔줌
+
+                else:
+                    if i <= newR < i + 8 and j <= newC < j + 8:
+                        if check_board[newR][newC] == 'W':
+                            cnt += 1
+                            check_board[newR][newC] = 'B'
+
+    return cnt
+
+import copy
+di = [-1, 1, 0, 0]
+dj = [0, 0, -1, 1]
 
 N, M = map(int, input().split())
 
 board = [list(input()) for _ in range(N)]
+check_board = copy.deepcopy(board)      # deepcopy 이용하여 원래 입력받은 board 건들이지 않음
 
 count = 64
-new_count = 0
 
-for j in range(0, M - 8 + 1):
-    for i in range(0, N - 8 + 1):
-        B_count = 0
-        W_count = 0
+for i in range(0, N - 8 + 1):
+    for j in range(0, M - 8 + 1):
+        check_board = copy.deepcopy(board)      # deepcopy 이용하여 원래 입력받은 board 건들이지 않음
+        result1 = first_B(i, j, 0, check_board)
+        check_board = copy.deepcopy(board)
+        result2 = first_W(i, j, 0, check_board)
 
-        for k in range(8):
-            W_count += board[i+k][j:j+8].count('W')
-            B_count += board[i+k][j:j+8].count('B')
-        print(W_count, B_count)
-        W = abs(32 - W_count)
-        B = abs(32 - B_count)
-        if count > (W+B)/2:
-            count = int((W+B)/2)
+        if count > min(result1, result2):
+            count = min(result1, result2)
 
 print(count)
 

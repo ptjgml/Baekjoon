@@ -17,60 +17,75 @@
 # 출력
 # 첫째 줄에 동근이의 위치와 각 상점 사이의 최단 거리의 합을 출력한다.
 
-def point(i, four, dis):
+# def point(i, four, dis):
+#
+#     if four == 1:
+#         store_lst[i] = [h,dis]
+#     elif four == 2:
+#         store_lst[i] = [0,dis]
+#     elif four == 3:
+#         store_lst[i] = [dis,0]
+#     else:
+#         store_lst[i] = [dis,w]
+#
+#
+# w, h = map(int, input().split())
+# store = int(input())
+#
+# store_lst = [[0]*2 for _ in range(store+1)]
+#
+# for i in range(store):
+#     four, dis = map(int, input().split())
+#     if four == 3 or four == 4:
+#         dis = h - dis
+#     point(i, four, dis)
+#
+# dong_four, dong_dis = map(int, input().split())
+# dongs = point(store,dong_four, dong_dis)
+#
+# distance = 0
+#
+#     distance += min(h - store_lst[j][1] + store_lst[-1][1], h + w +  store_lst[j][1] + w - store_lst[-1][1])
 
-    if four == 1:
-        store_lst[i] = [h,dis]
-    elif four == 2:
-        store_lst[i] = [0,dis]
-    elif four == 3:
-        store_lst[i] = [dis,0]
-    else:
-        store_lst[i] = [dis,w]
+
+
 
 
 w, h = map(int, input().split())
 store = int(input())
 
-store_lst = [[0]*2 for _ in range(store+1)]
+lst = [[0,0]] + [list(map(int, input().split())) for _ in range(store+1)]
+distance_lst = [0] * (store+2)
 
-for i in range(store):
-    four, dis = map(int, input().split())
-    if four == 3 or four == 4:
-        dis = h - dis
-    point(i, four, dis)
+for i in range(1, store+2):
+    if lst[i][0] == 1:
+        distance_lst[i] = lst[i][1]
+    elif lst[i][0] == 2:
+        distance_lst[i] = w + h + (w - lst[i][1])
+    elif lst[i][0] == 3:
+        distance_lst[i] = 2*w + h + (h - lst[i][1])
+    elif lst[i][0] == 4:
+        distance_lst[i] = w + lst[i][1]
 
-dong_four, dong_dis = map(int, input().split())
-dongs = point(store,dong_four, dong_dis)
+sumV = 0
+for j in range(1, store+1):
+    sumV += min(abs(distance_lst[-1] - distance_lst[j]), 2*w+2*h - abs(distance_lst[-1] - distance_lst[j]))
 
-distance = 0
+print(sumV)
 
-for j in range(store):
-   
-    if store_lst[j][0] == store_lst[-1][0]:
-        distance += abs(store_lst[j][1] - store_lst[-1][1])
-    else:
-        distance += min((sum(store_lst[j])+sum(store_lst[-1])), w*2+h*2 - sum(store_lst[j])+sum(store_lst[-1]))
-    
-print(distance)
 
-# print(distance)
-# 
-# 
-#  # if store_lst[j][0] == store_lst[-1][0]:
-    #     distance += abs(store_lst[j][1] - store_lst[-1][1])
-    
-    # elif store_lst[j][0] == 1 or store_lst[j][0] == 2 :
-    #     if store_lst[-1][0] == 1 or store_lst[-1][0] == 2:
-    #         distance += h + min(store_lst[j][1]+store_lst[-1][1] , w*2 - store_lst[j][1]+store_lst[-1][1])
 
-    #     elif store_lst[-1][0] == 3 or store_lst[-1][0] == 4:
-    #         distance += min(store_lst[j][1]+store_lst[-1][1] , w*2 - store_lst[j][1]+store_lst[-1][1])
-        
-    
-    # elif store_lst[j][0] == 3 or store_lst[j][0] == 4:
-    #     if store_lst[-1][0] == 3 or store_lst[-1][0] == 4:
-    #         distance += (w + min(store_lst[j][1]+store_lst[-1][1] , h*2 - store_lst[j][1]+store_lst[-1][1]))
 
-    #     elif store_lst[-1][0] == 1 or store_lst[-1][0] == 2:
-    #         distance += min(h - store_lst[j][1] + store_lst[-1][1], h + w +  store_lst[j][1] + w - store_lst[-1][1])
+
+
+
+
+
+
+
+
+
+
+
+
+
