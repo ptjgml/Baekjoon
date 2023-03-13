@@ -20,7 +20,11 @@
 #
 # 출력
 # 각 테스트 케이스에 대해 어린 왕자가 거쳐야 할 최소의 행성계 진입/이탈 횟수를 출력한다.
+import math
 
+def r(sx, sy, cx, cy):
+    result = math.sqrt(abs(sx - cx)**2 + abs(sy - cy)**2)
+    return result
 
 T = int(input())
 
@@ -30,7 +34,22 @@ for t in range(T):
     n = int(input())
 
     circle = [list(map(int, input().split())) for _ in range(n)]
+    count = 0
 
+    for i in range(n):
+        # 출발/도착 둘 다 원 안
+        if r(x1, y1, circle[i][0], circle[i][1]) <= circle[i][2] and r(x2, y2, circle[i][0], circle[i][1]) <= circle[i][2]:
+            continue
+
+        # 출발/도착 하나만 원 안
+        elif r(x1, y1, circle[i][0], circle[i][1]) <= circle[i][2] or r(x2, y2, circle[i][0], circle[i][1]) <= circle[i][2]:
+            count += 1
+
+        # 출발/도착 둘 다 원 밖
+        else:
+            continue
+
+    print(count)
 
 
 
