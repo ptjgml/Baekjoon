@@ -28,7 +28,6 @@ for i in range(N):
         if lst[i][j] == 1:
             Q.append((i,j))
             visited[i][j] = 1
-            lst[i][j] = 1
 
         elif lst[i][j] == 0:
             to_cnt += 1
@@ -36,7 +35,7 @@ for i in range(N):
 if to_cnt == (N*M):
     print(-1)
 elif len(Q) == 0:
-    print(0)
+    print(-1)
 else:
     bfs()
     for a in range(N):

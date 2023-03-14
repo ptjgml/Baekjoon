@@ -18,29 +18,23 @@
 # 출력
 # 첫째 줄에 N번째 영화의 제목에 들어간 수를 출력한다.
 
-def check(num):
-    six = 0
 
-    if six >= 3 and count == N:
-        result = num
-        return
+import sys
+N = int(sys.stdin.readline())
 
-    for i in str(num):
-        if i == '6':
-            six += 1
-        else:
-            six = 0
-
-
-N = int(input())
-
-num = result = 666
-count = 1
+num = 666
+count = 0
 
 while True:
-    count += 1
+    if '666' in str(num):
+        count += 1
+        if count == N:
+            break
     num += 1
 
+print(num)
 
 
-print(result)
+
+
+
