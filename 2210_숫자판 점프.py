@@ -18,36 +18,28 @@
 di = [-1, 1, 0, 0]
 dj = [0, 0, -1, 1]
 
-def bfs(row, col):
-    Q = []
-    count = 1
+def bfs(row, col, num):
 
-    Q.append((row, col))
-    num = lst[row][col]
+    if len(num) == 6:
+        if num not in result:
+            result.append(num)
+        return
 
-    while Q:
-        row, col = Q.pop(0)
-        if count == 6:
-            if num not in result:
-                result.append(num)
-            break
+    for k in range(4):
+        newR = row + di[k]
+        newC = col + dj[k]
 
-        for k in range(4):
-            newR = row + di[k]
-            newC = col + dj[k]
-            
-
-            if 0<= newR < 5 and 0<= newC < 5:
-                count += 1
-                num += lst[newR][newC]
-                Q.append((newR, newC))           
-
+        if 0<= newR < 5 and 0<= newC < 5:
+            num += lst[newR][newC]
+            bfs(newR, newC, num)
 
 lst = [list(map(str, input().split())) for _ in range(5)]
 result = []
+num = ''
 
 for row in range(5):
     for col in range(5):
-        bfs(row, col)
+        num = lst[row][col]
+        bfs(row, col, num)
 
 print(len(result))
