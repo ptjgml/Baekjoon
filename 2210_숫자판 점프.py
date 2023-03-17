@@ -19,7 +19,6 @@ di = [-1, 1, 0, 0]
 dj = [0, 0, -1, 1]
 
 def bfs(row, col, num):
-
     if len(num) == 6:
         if num not in result:
             result.append(num)
@@ -30,16 +29,16 @@ def bfs(row, col, num):
         newC = col + dj[k]
 
         if 0<= newR < 5 and 0<= newC < 5:
-            num += lst[newR][newC]
-            bfs(newR, newC, num)
+            n_num = num + lst[newR][newC]
+            bfs(newR, newC, n_num)
 
 lst = [list(map(str, input().split())) for _ in range(5)]
 result = []
-num = ''
 
 for row in range(5):
     for col in range(5):
-        num = lst[row][col]
+        num = ''
+        num += lst[row][col]
         bfs(row, col, num)
 
 print(len(result))
