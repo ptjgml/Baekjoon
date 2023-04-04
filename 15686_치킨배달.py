@@ -51,6 +51,7 @@ def per(idx, start):
     global minV
 
     if idx == M:
+        # print(chicken_lst)
         total = 0
         for n in range(len(house)):
             dis = 1e10
@@ -63,7 +64,7 @@ def per(idx, start):
     else:
         for i in range(start, len(chicken)):
             chicken_lst.append(chicken[i])
-            per(idx+1, start)
+            per(idx+1, i+1)
             chicken_lst.pop()
 
 N, M = map(int, sys.stdin.readline().split())
@@ -80,6 +81,10 @@ for i in range(N):
             chicken.append((i+1, j+1))
         elif city[i][j] == 1:
             house.append((i+1, j+1))
+
+# print('chicken : ', chicken)
+# print('house : ', house)
+
 per(0, 0)
 
 print(minV)
