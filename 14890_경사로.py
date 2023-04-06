@@ -43,7 +43,271 @@
 # 출력
 # 첫째 줄에 지나갈 수 있는 길의 개수를 출력한다.
 
+# def check(one):
+#     global result
+#     slide = [False] * N
+#     for i in range(N-1):
+#
+#         if abs(one[i] - one[i+1]) > 1:
+#             result -= 1
+#             return
+#
+#         elif i > 0 and L > 1 and one[i-1] != one[i] and one[i] != one[i+1]:
+#             result -= 1
+#             return
+#
+#         elif i>0 and L == 1 and one[i-1] != one[i] and one[i] != one[i+1]:
+#             if (one[i-1] > one[i] and one[i] < one[i+1]) or (one[i-1] < one[i] and one[i] > one[i+1]):
+#                 result -= 1
+#                 return
+#
+#         elif one[i] != one[i+1]:
+#             if one[i] > one[i+1]:
+#                 if one[i+1:i+L+1].count(one[i+1]) >= L:
+#                     continue
+#                 else:
+#                     result -= 1
+#                     return
+#             else:
+#                 if one[i-L+1 : i+1].count(one[i]) >= L:
+#                     continue
+#                 else:
+#                     result -= 1
+#                     return
+#
+#
+# N, L = map(int, input().split())
+# map_lst = [list(map(int, input().split())) for _ in range(N)]
+#
+# result = 2*N
+# for i in range(N):
+#     row = map_lst[i]
+#     print('row : ', row)
+#     check(row)
+#     print('result : ', result)
+# print(result)
+#
+# print()
+# for b in range(N):
+#     col = []
+#     for a in range(N):
+#         col.append(map_lst[a][b])
+#     print('col : ', col)
+#     check(col)
+#     print('result : ', result)
+#
+# print(result)
+
+
+
+
+# # 반례
+# 6 1
+# 3 3 3 3 3 3
+# 3 3 4 3 3 3
+# 2 3 3 3 3 3
+# 2 2 3 4 3 2
+# 2 3 3 4 3 2
+# 3 3 3 3 3 2
+# ---> 답 : 11
+
+
+
+# 6 1
+# 4 4 4 5 5 4
+# 3 3 4 4 4 3
+# 2 3 3 4 3 2
+# 2 3 4 4 3 2
+# 3 4 4 4 3 3
+# 4 4 4 4 4 4
+# ---> 답: 11
+
+
+
+# 6 1
+# 4 4 4 4 3 3
+# 4 4 4 4 3 4
+# 4 4 4 4 4 4
+# 3 3 4 4 4 3
+# 3 4 5 5 4 3
+# 3 4 5 4 3 3
+# ---> 답 : 10
+
+
+
+
+# 7 1
+# 3 3 4 4 4 4 3
+# 2 3 3 3 3 3 2
+# 2 2 3 2 2 2 2
+# 3 3 3 2 2 3 3
+# 4 3 3 3 3 4 4
+# 4 4 4 3 4 4 4
+# 4 4 4 4 4 4 4
+# ---> 답: 11
+
+
+
+# 6 1
+# 4 4 4 4 3 3
+# 4 4 4 4 4 4
+# 3 3 3 4 3 3
+# 2 2 3 3 2 2
+# 2 2 2 2 2 2
+# 2 3 3 3 3 3
+# ---> 답 : 10
+
+
+
+
+# 5 1
+# 4 4 4 4 4
+# 3 3 4 3 3
+# 3 4 3 3 3
+# 4 4 3 3 3
+# 4 4 3 4 4
+# ---> 답 : 8
+
+
+
+
+# 5 1
+# 6 6 5 3 4
+# 6 5 4 4 5
+# 4 4 3 3 4
+# 3 4 3 4 3
+# 4 5 5 4 3
+# ---> 답 : 5
+
+
+# 6 1
+# 5 3 3 4 6 6
+# 5 4 3 4 6 6
+# 4 3 3 4 5 5
+# 3 3 3 4 4 4
+# 3 3 3 3 4 4
+# 5 3 3 4 5
+# ---> 답 : 7
+
+
+# 5 1
+# 4 4 4 4 4
+# 3 3 3 3 3
+# 4 4 4 3 4
+# 5 5 5 5 5
+# 5 6 5 5 5
+# ---> 답 : 4
+
+
+
+# 6 1
+# 4 5 5 4 3 3
+# 4 4 4 3 3 3
+# 3 3 3 3 2 2
+# 3 4 3 3 3 2
+# 4 4 4 4 3 3
+# 4 5 5 4 3 3
+# ---> 답 : 10
+
+
+
+# 3 1
+# 3 2 3
+# 2 3 2
+# 3 2 3
+# ---> 답 : 2   내리막 완성 후 이후의 잠재적인 오르막까지 체크를 해야하는데 잘못 처리한 경우
+
+
+
+
+def check(one):
+    global result
+    slide = [0] * N
+    # print('slide : ', slide)
+    for i in range(N-1):
+        if abs(one[i] - one[i+1]) > 1:
+            result -= 1
+            return
+
+        elif i > 0 and ((one[i-1] > one[i] and one[i] > one[i+1]) or (one[i-1] < one[i] and one[i] < one[i+1])):
+            if L != 1:
+                result -= 1
+                return
+
+        elif i > 0 and L == 1 and (one[i-1] > one[i] and one[i] < one[i+1]):
+                result -= 1
+                return
+
+        # elif i > 0 and L > 1 and one[i-1] != one[i] and one[i] != one[i+1]:
+        #     result -= 1
+        #     return
+
+        elif one[i] != one[i+1]:
+            if one[i] > one[i+1]:
+                if one[i+1:i+L+1].count(one[i+1]) >= L:
+                    for j in range(i+1, i+L+1):
+                        if slide[j] == 1:
+                            result -= 1
+                            return
+                        slide[j] = 1
+                    continue
+                else:
+                    result -= 1
+                    return
+            else:
+                if one[i-L+1 : i+1].count(one[i]) >= L:
+                    for j in range(i-L+1, i+1):
+                        if slide[j] == 1:
+                            result -= 1
+                            return
+                        slide[j] = 1
+
+                    continue
+                else:
+                    result -= 1
+                    return
+
+
 N, L = map(int, input().split())
 map_lst = [list(map(int, input().split())) for _ in range(N)]
+
+result = 2*N
+for ii in range(N):
+    row = map_lst[ii]
+    # print('row : ', row)
+    check(row)
+#     print('result : ', result)
+#     print()
+# print(result)
+#
+# print()
+for b in range(N):
+    col = []
+    for a in range(N):
+        col.append(map_lst[a][b])
+    # print('col : ', col)
+    check(col)
+    # print('result : ', result)
+
+print(result)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
