@@ -29,28 +29,29 @@
 
 
 
-N = int(input())
-K = int(input())
-board = [[0]*N for _ in range(N)]
+N = int(input())    # 보드의 크기
+K = int(input())    # 사과의 개수
+board = [[0]*N for _ in range(N)]   # 보드를 다 0으로 채움
 for i in range(K):
     apple_x, apple_y = map(int, input().split())
-    board[apple_x][apple_y] = 1
+    board[apple_x][apple_y] = 1     # 사과가 있는 곳을 1로 바꿈
 
 
-L = int(input())
-change = [list(map(str, input().split())) for _ in range(L)]
+L = int(input())    # 뱀의 방향 변환 횟수
+change = [list(map(str, input().split())) for _ in range(L)]    # 뱀의 방향 변환 정보 리스트로 저장
 
-hx = hy = 0
-long = 1
-ex = hx - long + 1
-ey = hy - long + 1
+hx = hy = 0 # 뱀의 머리 위치 (0,0)으로 저장
+long = 1    # 뱀의 몸 길이
+ex = hx - long + 1  # 뱀의 꼬리 x좌표 위치 = 머리 x위치 - 몸 길이 + 1
+ey = hy - long + 1  # 뱀의 꼬리 y좌표 위치 = 머리 y위치 - 몸 길이 + 1
 
 for a in range(N):
     for b in range(N):
         n_x = hx+a
         n_y = hy+b
-        if board[n_x][n_y] == 1:
-            long += 1
+        if board[n_x][n_y] == 1:    # 움직인 곳에서 사과를 먹으면
+            long += 1   # 몸 길이 1만큼 증가
+            board[n_x][n_y] = 0
 
 
 
