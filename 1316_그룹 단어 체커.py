@@ -13,9 +13,19 @@
 # 첫째 줄에 그룹 단어의 개수를 출력한다.
 
 N = int(input())
-
-lst = list(input())
-
+cnt = 0
 for i in range(N):
-    for j in range(len(lst[i])):
-        
+    lst = []
+    length = 0
+    word = input()
+
+    for j in range(len(word)):
+        if word[j] in lst and lst[-1] != word[j]:
+            continue
+        else:
+            lst.append(word[j])
+            length += 1
+    if length == len(word):
+        cnt += 1
+
+print(cnt)
