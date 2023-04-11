@@ -36,5 +36,14 @@
 
 N = int(input())
 
+lst = [list(map(int, input().split())) for _ in range(N)]
+result = [0] * N
+
 for i in range(N):
-    x, y = map(int, input(),split())
+    count = 1
+    for j in range(N):
+        if lst[i][0] < lst[j][0] and lst[i][1] < lst[j][1]:
+            count += 1
+    result[i] = count
+
+print(*result)

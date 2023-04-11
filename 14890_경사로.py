@@ -101,23 +101,157 @@
 
 
 
+<<<<<<< HEAD
+=======
+# # 반례
+# 6 1
+# 3 3 3 3 3 3
+# 3 3 4 3 3 3
+# 2 3 3 3 3 3
+# 2 2 3 4 3 2
+# 2 3 3 4 3 2
+# 3 3 3 3 3 2
+# ---> 답 : 11
+
+
+
+# 6 1
+# 4 4 4 5 5 4
+# 3 3 4 4 4 3
+# 2 3 3 4 3 2
+# 2 3 4 4 3 2
+# 3 4 4 4 3 3
+# 4 4 4 4 4 4
+# ---> 답: 11
+
+
+
+# 6 1
+# 4 4 4 4 3 3
+# 4 4 4 4 3 4
+# 4 4 4 4 4 4
+# 3 3 4 4 4 3
+# 3 4 5 5 4 3
+# 3 4 5 4 3 3
+# ---> 답 : 10
+
+
+
+
+# 7 1
+# 3 3 4 4 4 4 3
+# 2 3 3 3 3 3 2
+# 2 2 3 2 2 2 2
+# 3 3 3 2 2 3 3
+# 4 3 3 3 3 4 4
+# 4 4 4 3 4 4 4
+# 4 4 4 4 4 4 4
+# ---> 답: 11
+
+
+
+# 6 1
+# 4 4 4 4 3 3
+# 4 4 4 4 4 4
+# 3 3 3 4 3 3
+# 2 2 3 3 2 2
+# 2 2 2 2 2 2
+# 2 3 3 3 3 3
+# ---> 답 : 10
+
+
+
+
+# 5 1
+# 4 4 4 4 4
+# 3 3 4 3 3
+# 3 4 3 3 3
+# 4 4 3 3 3
+# 4 4 3 4 4
+# ---> 답 : 8
+
+
+
+
+# 5 1
+# 6 6 5 3 4
+# 6 5 4 4 5
+# 4 4 3 3 4
+# 3 4 3 4 3
+# 4 5 5 4 3
+# ---> 답 : 5
+
+
+# 6 1
+# 5 3 3 4 6 6
+# 5 4 3 4 6 6
+# 4 3 3 4 5 5
+# 3 3 3 4 4 4
+# 3 3 3 3 4 4
+# 5 3 3 4 5
+# ---> 답 : 7
+
+
+# 5 1
+# 4 4 4 4 4
+# 3 3 3 3 3
+# 4 4 4 3 4
+# 5 5 5 5 5
+# 5 6 5 5 5
+# ---> 답 : 4
+
+
+
+# 6 1
+# 4 5 5 4 3 3
+# 4 4 4 3 3 3
+# 3 3 3 3 2 2
+# 3 4 3 3 3 2
+# 4 4 4 4 3 3
+# 4 5 5 4 3 3
+# ---> 답 : 10
+
+
+
+# 3 1
+# 3 2 3
+# 2 3 2
+# 3 2 3
+# ---> 답 : 2   내리막 완성 후 이후의 잠재적인 오르막까지 체크를 해야하는데 잘못 처리한 경우
+
+
+
+>>>>>>> 6680d50d5f5bc5559973eb4393c1917a36f77fd1
 
 def check(one):
     global result
     slide = [0] * N
+<<<<<<< HEAD
     print('slide : ', slide)
     for i in range(N-1):
 
+=======
+    # print('slide : ', slide)
+    for i in range(N-1):
+>>>>>>> 6680d50d5f5bc5559973eb4393c1917a36f77fd1
         if abs(one[i] - one[i+1]) > 1:
             result -= 1
             return
 
+<<<<<<< HEAD
         elif i > 0 and (one[i-1] > one[i] and one[i] > one[i+1]) or (one[i-1] < one[i] and one[i] < one[i+1]):
+=======
+        elif i > 0 and ((one[i-1] > one[i] and one[i] > one[i+1]) or (one[i-1] < one[i] and one[i] < one[i+1])):
+>>>>>>> 6680d50d5f5bc5559973eb4393c1917a36f77fd1
             if L != 1:
                 result -= 1
                 return
 
+<<<<<<< HEAD
         elif i > 0 and L == 1 and (one[i-1] > one[i] and one[i] < one[i+1]) or (one[i-1] < one[i] and one[i] > one[i+1]):
+=======
+        elif i > 0 and L == 1 and (one[i-1] > one[i] and one[i] < one[i+1]):
+>>>>>>> 6680d50d5f5bc5559973eb4393c1917a36f77fd1
                 result -= 1
                 return
 
@@ -155,6 +289,7 @@ N, L = map(int, input().split())
 map_lst = [list(map(int, input().split())) for _ in range(N)]
 
 result = 2*N
+<<<<<<< HEAD
 for i in range(N):
     row = map_lst[i]
     print('row : ', row)
@@ -164,13 +299,30 @@ for i in range(N):
 print(result)
 
 print()
+=======
+for ii in range(N):
+    row = map_lst[ii]
+    # print('row : ', row)
+    check(row)
+#     print('result : ', result)
+#     print()
+# print(result)
+#
+# print()
+>>>>>>> 6680d50d5f5bc5559973eb4393c1917a36f77fd1
 for b in range(N):
     col = []
     for a in range(N):
         col.append(map_lst[a][b])
+<<<<<<< HEAD
     print('col : ', col)
     check(col)
     print('result : ', result)
+=======
+    # print('col : ', col)
+    check(col)
+    # print('result : ', result)
+>>>>>>> 6680d50d5f5bc5559973eb4393c1917a36f77fd1
 
 print(result)
 
@@ -193,7 +345,10 @@ print(result)
 
 
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> 6680d50d5f5bc5559973eb4393c1917a36f77fd1
 
