@@ -33,17 +33,40 @@
 # 첫째 줄에는 입력되는 온도의 수열에서 
 # 연속적인 K일의 온도의 합이 최대가 되는 값을 출력한다.
 
+# N, K = map(int, input().split())
+#
+# day = list(map(int, input().split()))
+# dp_lst = [0]* (N - K + 1)
+#
+# dp_lst[0] = sum(day[0:K])
+# maxV = dp_lst[0]
+#
+# for i in range(1, N-K+1):
+#     sumV = dp_lst[i-1] - day[i-1]+day[i+K-1]
+#     dp_lst[i] = sumV
+#     if sumV > maxV:
+#         maxV = sumV
+# print(maxV)
+
+
+
+
+
+
+
+
+# 2023.04.13 풀이
+
 N, K = map(int, input().split())
+input_lst = list(map(int, input().split()))
+lst = [0] * N
 
-day = list(map(int, input().split()))
-dp_lst = [0]* (N - K + 1)
-
-dp_lst[0] = sum(day[0:K])
-maxV = dp_lst[0]
+lst[0] = sum(input_lst[0:K])
+maxV = lst[0]
 
 for i in range(1, N-K+1):
-    sumV = dp_lst[i-1] - day[i-1]+day[i+K-1]
-    dp_lst[i] = sumV
-    if sumV > maxV:
-        maxV = sumV
+    lst[i] = lst[i-1] - input_lst[i-1] + input_lst[i+K-1]
+    if maxV < lst[i]:
+        maxV = lst[i]
+
 print(maxV)

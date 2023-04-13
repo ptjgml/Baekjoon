@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 def check(one):
     global result
     slide = [0] * N
@@ -69,5 +68,4 @@ for b in range(N):
     # print('result : ', result)
 
 print(result)
-=======
->>>>>>> 7ddbc04ed1c961cc12f3f7fad69e00b430c28fbc
+
