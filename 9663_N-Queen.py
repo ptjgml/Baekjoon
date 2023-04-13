@@ -11,35 +11,21 @@
 def per(idx):
     global cnt
 
-    # if idx == N:
-    #     cnt += 1
-    #     return
+    if idx == N:
+        cnt += 1
+        return
 
     for i in range(N):
-        if i not in p[0:idx] and (i-1 != p[idx-1] or i+1 != p[idx-1]):
             p[idx] = i
-            if idx+1 == N:
-                print('p : ', p)
-                cnt += 1
-                return
-            per(idx+1)
-            p[idx] = -99
-        else:
-            continue
+            if check(p, idx) == True:
+                per(idx+1)
+                p[idx] = -99
 
-        # print(p[idx])
-        # print(p[0:idx])
-
-        # res = check(p, idx)
-        # if res == True:
-        #     per(idx+1)
-        #
-
-# def check(p, idx):
-#     for k in range(0, idx):
-#         if p[idx] == p[k]:
-#             return False
-#     return True
+def check(p, idx):
+    for k in range(0, idx):
+        if p[idx] == p[k] or p[idx] - 1 == p[idx-1] or p[idx] + 1 == p[idx-1]:
+            return False
+    return True
 
 N = int(input())
 
