@@ -8,6 +8,9 @@
 #
 # 출력
 # 첫째 줄에 퀸 N개를 서로 공격할 수 없게 놓는 경우의 수를 출력한다.
+
+import sys
+
 def per(idx):
     global cnt
 
@@ -19,15 +22,15 @@ def per(idx):
             p[idx] = i
             if check(p, idx) == True:
                 per(idx+1)
-                p[idx] = -99
+                # p[idx] = -99
 
 def check(p, idx):
     for k in range(0, idx):
-        if p[idx] == p[k] or p[idx] - 1 == p[idx-1] or p[idx] + 1 == p[idx-1]:
+        if p[idx] == p[k] or abs(p[idx] - p[k]) == abs(idx-k):
             return False
     return True
 
-N = int(input())
+N = int(sys.stdin.readline())
 
 cnt = 0
 p = [-99] * N
