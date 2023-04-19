@@ -82,38 +82,45 @@
 
 N, M, K = map(int, input().split())
 board = [list(input()) for _ in range(N)]
-lst = [[0]*M for _ in range(N)]
+
+lst_black = [[0]*(M+1) for _ in range(N+1)]
+lst_white = [[0]*(M+1) for _ in range(N+1)]
 sum_lst_black = [[0]*(M+1) for _ in range(N+1)]
-sum_lst_white = [[1]*(M+1) for _ in range(N+1)]
+sum_lst_white = [[0]*(M+1) for _ in range(N+1)]
+minV = 10e9
 
 for i in range(1, N+1):
     for j in range(1, M+1):
-
         if (i+j) % 2 == 0:
             if 'B' != board[i-1][j-1]:
-                sum_lst_black[i][j] = int(not sum_lst_black[i][j])
-                # sum_lst_black[i][j] = sum_lst_black[i][0] + sum_lst_black[0][j] - sum_lst_black[i-1][j-1] + sum_lst_black[i][j]
+                lst_black[i][j] = int(not lst_black[i][j])
 
-            if 'W' == board[i-1][j-1]:
-                sum_lst_white[i][j] = int(not sum_lst_white[i][j])
-                # sum_lst_white[i][j] = sum_lst_white[i][0] + sum_lst_white[0][j] - sum_lst_white[i-1][j-1] + sum_lst_white[i][j]
+            if 'W' != board[i-1][j-1]:
+                lst_white[i][j] = int(not lst_white[i][j])
 
         else:
             if 'B' == board[i-1][j-1]:
-                sum_lst_black[i][j] = int(not sum_lst_black[i][j])
-                # sum_lst_black[i][j] = sum_lst_black[i][0] + sum_lst_black[0][j] - sum_lst_black[i-1][j-1] + sum_lst_black[i][j]
+                lst_black[i][j] = int(not lst_black[i][j])
+
+            if 'W' == board[i-1][j-1]:
+                lst_white[i][j] = int(not lst_white[i][j])
+
+        sum_lst_black[i][j] = sum_lst_black[i][j - 1] + sum_lst_black[i - 1][j] - sum_lst_black[i - 1][j - 1] + lst_black[i][j]
+        sum_lst_white[i][j] = sum_lst_white[i][j - 1] + sum_lst_white[i - 1][j] - sum_lst_white[i - 1][j - 1] + lst_white[i][j]
+
+for a in range(1, N - K + 2):
+    for b in range(1, M - K + 2):
+        minV = min(minV, sum_lst_black[a+K-1][b+K-1] - sum_lst_black[a+K-1][b-1] - sum_lst_black[a-1][b+K-1] + sum_lst_black[a-1][b-1],
+                   sum_lst_white[a+K-1][b+K-1] - sum_lst_white[a+K-1][b-1] - sum_lst_white[a-1][b+K-1] + sum_lst_white[a-1][b-1])
 
 
-            if 'W' != board[i-1][j-1]:
-                sum_lst_white[i][j] = int(not sum_lst_white[i][j])
-                # sum_lst_white[i][j] = sum_lst_white[i][0] + sum_lst_white[0][j] - sum_lst_white[i-1][j-1] + sum_lst_white[i][j]
-
-
-for k in range(N+1):
-    print(*sum_lst_white[k])
-print()
-for l in range(N+1):
-    print(*sum_lst_black[l])
+print(minV)
+#
+# for k in range(N+1):
+#     print(*sum_lst_white[k])
+# print()
+# for l in range(N+1):
+#     print(*sum_lst_black[l])
 
 
 
