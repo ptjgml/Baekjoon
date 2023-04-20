@@ -24,7 +24,8 @@ lst = [list(map(int, sys.stdin.readline().split())) for _ in range(N)]
 
 s = e = 0
 cnt = 0
-lst.sort(key=lambda x: x[1])
+lst.sort(key=lambda x: x[0])
+print(lst)
 
 while lst:
     ns, ne = lst.pop(0)
