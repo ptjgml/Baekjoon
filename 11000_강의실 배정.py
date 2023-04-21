@@ -17,30 +17,29 @@
 # 출력
 # 강의실의 개수를 출력하라.
 
+import heapq
 import sys
-N = int(sys.stdin.readline())
+n = int(sys.stdin.readline())
 
-lst = [list(map(int, sys.stdin.readline().split())) for _ in range(N)]
+q = []
 
-s = e = 0
-cnt = 0
-lst.sort(key=lambda x: x[0])
-print(lst)
+for i in range(n):
+    start, end = map(int, sys.stdin.readline().split())
+    q.append([start, end])
 
-while lst:
-    ns, ne = lst.pop(0)
+q.sort()
 
-    if ns >= e:
-        s = ns
-        e = ne
-    else:
-        lst += [[ns, ne]]
-        s, e = lst.pop(0)
-        cnt += 1
+room = []
+heapq.heappush(room, q[0][1])
 
-print(cnt)
+for i in range(1, n):
+    if q[i][0] < room[0]: # 현재 회의실 끝나는 시간보다 다음 회의 시작시간이 빠르면
+        heapq.heappush(room, q[i][1]) # 새로운 회의실 개설
+    else: # 현재 회의실에 이어서 회의 개최 가능
+        heapq.heappop(room) # 새로운 회의로 시간 변경을 위해 pop후 새 시간 push
+        heapq.heappush(room, q[i][1])
 
-
+print(len(room))
 
 
 
