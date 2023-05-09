@@ -13,20 +13,37 @@
 # 출력
 # 영상을 압축한 결과를 출력한다.
 
+import sys
+
+sys.setrecursionlimit(10 ** 6)
+input = sys.stdin.readline
+
 N = int(input())
+video = []
+for _ in range(N):
+    v = [int(x) for x in list(input().rstrip())]
+    video.append(v)
 
-lst = [list(map(int, input())) for _ in range(N)]
 
-def fn(lst):
-    for i in range(0,N,2):
-        for j in range(0,N,2):
-            first = lst[i][j]
-            second = lst[i][j+1]
-            third = lst[i+1][j]
-            four = lst[i+1][j+1]
+def quadtree(n, vlist):
+    s = 0
+    for l in vlist:
+        s += sum(l)
 
-            if first==second==third==four:
-                res = str(first)
-            else:
-                res =
+    if s == n ** 2:
+        return '1'
+    if s == 0:
+        return '0'
 
+    half = n // 2
+    temp = '('
+    temp += quadtree(half, [l[:half] for l in vlist[:half]])
+    temp += quadtree(half, [l[half:] for l in vlist[:half]])
+    temp += quadtree(half, [l[:half] for l in vlist[half:]])
+    temp += quadtree(half, [l[half:] for l in vlist[half:]])
+    temp += ')'
+
+    return temp
+
+
+print(quadtree(N, video))
