@@ -7,32 +7,29 @@
 # 출력
 # 첫째 줄에 연결 요소의 개수를 출력한다.
 
-N, M = map(int, input().split())
+import sys
+sys.setrecursionlimit(10**6)
 
-u = []
-v = []
-stack = []
-visited = [False] * M
+def dfs(u):
+    for h in first[u]:
+        if visited[h] == False:
+            visited[h] = True
+            dfs(h)
 
-for i in range(M):
-    input_u, input_v = map(int, input().split())
-    u.append(input_u)
-    v.append(input_v)
+N, M = map(int, sys.stdin.readline().split())
 
+first = [[] for _ in range(N+1)]
+visited = [False] * (N+1)
 cnt = 0
+for i in range(M):
+    a, b = map(int, sys.stdin.readline().split())
+    first[a].append(b)
+    first[b].append(a)
 
-for j in range(M):
+for j in range(1, N+1):
     if visited[j] == False:
-        stack.append(v[j])
-
-        while stack:
-            connect = stack.pop()
-            for k in range(M):
-                if connect == u[k] and visited[k] == False:
-                    stack.append(v[k])
-                    visited[k] = True
-
+        visited[j] = True
+        dfs(j)
         cnt += 1
 
 print(cnt)
-
