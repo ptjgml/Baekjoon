@@ -1,22 +1,5 @@
-points = [0]*4
-scores = []
-for i in range(4):
-    scores.append(list(map(int, input().split())))
 
-for i in range(4):
-    for j in range(i, 4):
-        if i==j:
-            continue
-        else:
-            if scores[i][j] > scores[j][i]:
-                points[i] += 3
-                points[j] += 0
-            elif scores[i][j] == scores[j][i]:
-                points[i] += 1
-                points[j] += 1
-            else:
-                points[i] += 0
-                points[j] += 3
-
-print(*points)
-
+targets = [[1, 2], [1, 8], [4, 6], [2, 7], [1, 9]]
+# targetss = targets.sort(key = lambda x : x[0])
+targets = sorted(targets, key=lambda x : x[0])
+print(targets)

@@ -35,57 +35,103 @@
 # 출력
 # 각 테스트 케이스에 대해 필요한 최소의 배추흰지렁이 마리 수를 출력한다.
 
+#
+# # bfs + Q 사용
+# import sys
+# di = [-1, 1, 0, 0]
+# dj = [0, 0, -1, 1]
+#
+# def bfs(s_y, s_x):
+#
+#     Q.append((s_y, s_x))
+#     visited[s_y][s_x] = True
+#     check[s_y][s_x] = 0
+#     count = 0
+#     while Q:
+#         v_y, v_x = Q.pop(0)
+#         for k in range(4):
+#             newR = v_y + di[k]
+#             newC = v_x + dj[k]
+#
+#             if 0 <= newR < N and 0<= newC < M and visited[newR][newC] == False and check[newR][newC] == 1:
+#                 Q.append((newR,newC))
+#                 visited[newR][newC] = True
+#                 check[newR][newC] = 0
+#     else:
+#         count += 1
+#     # if not Q and cabbage:
+#     #     v_y, v_x = cabbage.pop(0)
+#     #     Q.append((v_y, v_x))
+#
+#     return count
+#
+# T = int(sys.stdin.readline())
+#
+# for t in range(T):
+#     M, N, K = map(int, sys.stdin.readline().split())
+#
+#     # cabbage = []
+#     check = [[0] * M for _ in range(N)]
+#     count = 0
+#     Q = []
+#     visited = [[False] * M for _ in range(N)]
+#
+#     for i in range(K):
+#         x, y = map(int, input().split())
+#         # cabbage.append((y, x))
+#         check[y][x] = 1
+#
+#     # for i in cabbage:
+#     #     y, x = i[0], i[1]
+#     #     if check[y][x] == 1:
+#     #         count = count + bfs(y, x)
+#     for i in range(M):
+#         for j in range(N):
+#             if check[j][i] == 1:
+#                 count = count+bfs(j,i)
+#     print(count)
+#
+#
 
-import sys
-di = [-1, 1, 0, 0]
-dj = [0, 0, -1, 1]
 
-def bfs(s_y, s_x):
+# 2023.08.25 풀이
+di = [0, 0, -1, 1]
+dj = [-1, 1, 0, 0]
 
-    Q.append((s_y, s_x))
-    visited[s_y][s_x] = True
-    check[s_y][s_x] = 0
-    count = 0
+def check():
+    global count, Q
     while Q:
-        v_y, v_x = Q.pop(0)
+        nowI, nowJ = Q.pop(0)
         for k in range(4):
-            newR = v_y + di[k]                    
-            newC = v_x + dj[k]
+            newI = nowI + di[k]
+            newJ = nowJ + dj[k]
+            if 0 <= newI < N and 0 <= newJ < M and lst[newI][newJ] == 1:
+                lst[newI][newJ] = 0
+                Q.append((newI, newJ))
 
-            if 0 <= newR < N and 0<= newC < M and visited[newR][newC] == False and check[newR][newC] == 1:
-                Q.append((newR,newC))
-                visited[newR][newC] = True
-                check[newR][newC] = 0
-    else:
-        count += 1
-    # if not Q and cabbage:
-    #     v_y, v_x = cabbage.pop(0)
-    #     Q.append((v_y, v_x))
-                
-    return count
+    count += 1
 
-T = int(sys.stdin.readline())
+
+T = int(input())
 
 for t in range(T):
-    M, N, K = map(int, sys.stdin.readline().split())
-
-    # cabbage = []
-    check = [[0] * M for _ in range(N)]
+    M, N, K = map(int, input().split())
+    lst = [[0] * M for _ in range(N)]
+    # print(lst)
+    inputlst = [list(map(int, input().split())) for _ in range(K)]
+    # print(inputlst)
     count = 0
     Q = []
-    visited = [[False] * M for _ in range(N)]
 
-    for i in range(K):
-        x, y = map(int, input().split())
-        # cabbage.append((y, x))
-        check[y][x] = 1
+    for a in range(K):
+        # print(int(inputlst[a][0]))
+        lst[inputlst[a][1]][inputlst[a][0]] = 1
 
-    # for i in cabbage:
-    #     y, x = i[0], i[1]
-    #     if check[y][x] == 1:
-    #         count = count + bfs(y, x)
-    for i in range(M):
-        for j in range(N):
-            if check[j][i] == 1:
-                count = count+bfs(j,i)
+    for i in range(N):
+        for j in range(M):
+            if lst[i][j] == 1:
+                Q.append((i, j))
+                lst[i][j] = 0
+                check()
+
     print(count)
