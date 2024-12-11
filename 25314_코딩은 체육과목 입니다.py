@@ -32,3 +32,15 @@ else:
     N -= 4
     n = N//4
     print('long ' * n + 'long int')
+
+
+#----------------------------------------
+# 2024.12.11
+N = int(input())
+
+if N == 4:
+    print('long int')
+else:
+    N -= 4
+    N //= 4
+    print('long ' * N + 'long int')
