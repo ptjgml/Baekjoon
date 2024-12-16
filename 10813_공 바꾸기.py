@@ -16,6 +16,7 @@
 # 1번 바구니부터 N번 바구니에 들어있는 공의 번호를 공백으로 구분해 출력한다.
 
 
+'''
 N, M = map(int, input().split())
 lst = [0]*(N+1)
 for m in range(1, N+1):
@@ -27,3 +28,20 @@ for n in range(M):
     lst[i], lst[j] = lst[j], lst[i]
 
 print(*lst[1:])
+'''
+
+
+
+
+
+# 2024.12.16
+
+N, M = map(int, input().split())
+lst = [n for n in range(N+1)]
+
+
+for n in range(M):
+    i, j = map(int, input().split())
+    lst[i], lst[j] = lst[j], lst[i]
+
+print(*lst[1:N+1])
