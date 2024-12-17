@@ -11,6 +11,16 @@
 # 출력
 # S의 i번째 글자를 출력한다.
 
+'''
+S = input()
+i = int(input())
+
+print(S[i-1])
+'''
+
+
+#2024.12.17
+
 S = input()
 i = int(input())
 

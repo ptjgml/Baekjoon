@@ -9,8 +9,20 @@
 # 출력
 # 각 테스트 케이스에 대해서 주어진 문자열의 첫 글자와 마지막 글자를 연속하여 출력한다.
 
+'''
 T = int(input())
 
 for t in range(T):
     input_s = input()
     print(input_s[0]+input_s[-1])
+'''
+
+
+
+#2024.12.17
+
+T = int(input())
+
+for i in range(T):
+    input_str = input()
+    print(input_str[0]+input_str[-1])

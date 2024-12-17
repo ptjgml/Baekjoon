@@ -7,6 +7,15 @@
 # 출력
 # 첫째 줄에 입력으로 주어진 단어의 길이를 출력한다.
 
+'''
 input_s = input()
 
 print(len(input_s))
+'''
+
+
+
+#2024.12.17
+
+s = input()
+print(len(s))
