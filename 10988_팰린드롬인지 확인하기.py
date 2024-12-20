@@ -11,10 +11,22 @@
 # 출력
 # 첫째 줄에 팰린드롬이면 1, 아니면 0을 출력한다.
 
+'''
 input_s = input()
 reverse_input_s = input_s[::-1]
 
 if input_s == reverse_input_s:
+    print(1)
+else:
+    print(0)
+'''
+
+
+#2024.12.20
+
+word = input()
+
+if word == word[::-1]:
     print(1)
 else:
     print(0)

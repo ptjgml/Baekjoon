@@ -26,6 +26,7 @@
 # 입력으로 주어진 단어가 몇 개의 크로아티아 알파벳으로 이루어져 있는지 출력한다.
 
 
+'''
 alph = ['c=', 'c-', 'dz=', 'd-', 'lj', 'nj', 's=', 'z=']
 
 input_s = input()
@@ -47,3 +48,17 @@ while i < len(input_s):
         i += 1
 
 print(count)
+'''
+
+
+#2024.12.20
+
+alpha = ['c=', 'c-', 'dz=', 'd-', 'lj', 'nj', 's=', 'z=']
+
+input_word = input()
+
+
+for al in alpha:
+    input_word = input_word.replace(al,'*')
+
+print(len(input_word))

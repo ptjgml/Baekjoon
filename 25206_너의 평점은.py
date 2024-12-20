@@ -36,6 +36,7 @@
 # 등급은 A+,A0,B+,B0,C+,C0,D+,D0,F,P중 하나이다.
 # 적어도 한 과목은 등급이 P가 아님이 보장된다.
 
+'''
 g = {'A+' : 4.5, 'A0' : 4.0,
      'B+' : 3.5, 'B0' : 3.0,
      'C+' : 2.5, 'C0' : 2.0,
@@ -55,11 +56,32 @@ for i in range(20):
         total += float(score)
 
 print(float(m_total/total))
+'''
 
 
 
 
 
+#2024.12.20
+
+check = {'A+' : 4.5, 'A0' : 4.0,
+         'B+' : 3.5, 'B0' : 3.0,
+         'C+' : 2.5, 'C0' : 2.0,
+         'D+' : 1.5, 'D0' : 1.0,
+         'F' : 0.0}
+
+total_score = 0
+chihoon_score = 0
+
+for i in range(20):
+    name, score, grade = input().split()
+    if grade == 'P':
+        continue
+    else:
+        total_score += float(score)
+        chihoon_score += (float(score) * check[grade])
+    
+print(float(chihoon_score / total_score))
 
 
 

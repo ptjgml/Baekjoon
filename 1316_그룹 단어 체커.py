@@ -12,6 +12,7 @@
 # 출력
 # 첫째 줄에 그룹 단어의 개수를 출력한다.
 
+'''
 N = int(input())
 cnt = 0
 for i in range(N):
@@ -29,3 +30,31 @@ for i in range(N):
         cnt += 1
 
 print(cnt)
+'''
+
+
+
+#2024.12.20
+
+N = int(input())
+count = 0
+
+for i in range(N):
+    word = input()
+    check = set()
+    group_word_flag = True
+
+    for j in range(len(word)):
+        if word[j] in check:
+            if word[j] != word[j-1]:
+                group_word_flag = False
+                break
+        else:
+            check.add(word[j])
+    
+    if group_word_flag:
+        count += 1
+    
+print(count)
+
+    

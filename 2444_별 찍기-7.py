@@ -7,6 +7,19 @@
 # 출력
 # 첫째 줄부터 2×N-1번째 줄까지 차례대로 별을 출력한다.
 
+'''
+import sys
+
+N = int(sys.stdin.readline())
+for i in range(2 * N - 1):
+    tmp = abs(i - N + 1)
+    print(' ' * tmp + '*' * (2 *(N - tmp) - 1))
+'''
+
+
+
+#2024.12.20
+
 import sys
 
 N = int(sys.stdin.readline())
