@@ -14,7 +14,7 @@
 # 출력
 # 첫째 줄에 색종이가 붙은 검은 영역의 넓이를 출력한다.
 
-
+'''
 N = int(input())
 
 lst = [list(map(int, input().split())) for _ in range(N)]
@@ -31,3 +31,25 @@ for j in range(100):
     sumV += paper[j].count(1)
 
 print(sumV)
+'''
+
+
+
+
+#2024.12.20
+
+N = int(input())
+check = [[0] *101 for _ in range(101)]
+
+for i in range(N):
+    x_point, y_point = map(int, input().split())
+    for row in range(x_point, x_point+10):
+        for col in range(y_point, y_point+10):
+            check[row][col] = 1
+
+result = 0
+
+for j in check:
+    result += j.count(1)
+
+print(result)

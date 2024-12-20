@@ -25,6 +25,7 @@
 
 
 
+'''
 lst = [list(map(int, input().split())) for _ in range(9)]
 maxV = lst[0][0]
 x = y = 0
@@ -37,6 +38,26 @@ for i in range(9):
 
 print(maxV)
 print(x+1, y+1)
+'''
+
+
+
+#2024.12.20
+
+lst = [list(map(int, input().split())) for _ in range(9)]
+
+max_value = 0
+row = 0
+col = 0
+
+for i in range(9):
+    if max_value < max(lst[i]):
+        max_value = max(lst[i])
+        row = i
+        col = lst[i].index(max_value)
+
+print(max_value)
+print(row+1, col+1)
 
 
 

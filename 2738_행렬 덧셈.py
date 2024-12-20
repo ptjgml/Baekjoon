@@ -10,6 +10,23 @@
 # 첫째 줄부터 N개의 줄에 행렬 A와 B를 더한 행렬을 출력한다. 행렬의 각 원소는 공백으로 구분한다.
 
 
+'''
+N, M = map(int, input().split())
+
+lst_A = [list(map(int, input().split())) for _ in range(N)]
+lst_B = [list(map(int, input().split())) for _ in range(N)]
+
+for i in range(N):
+    for j in range(M):
+        lst_A[i][j] = lst_A[i][j] + lst_B[i][j]
+    print(*lst_A[i])
+'''
+
+
+
+
+#2024.12.20
+
 N, M = map(int, input().split())
 
 lst_A = [list(map(int, input().split())) for _ in range(N)]
