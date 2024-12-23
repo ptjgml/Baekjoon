@@ -28,6 +28,8 @@
 # [8,9,10,11,12,13,14,15,16,17,18,19]   12
 # [20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37]       18
 
+
+'''
 import sys
 N = int(sys.stdin.readline())
 end = 1
@@ -45,7 +47,25 @@ else:
                         break
                 else:
                         n += 1
+'''
 
 
+
+
+#2024.12.23
+
+N = int(input())
+
+check = [1]
+result = 0
+
+while True:
+    if N > check[-1]:
+        check.append(check[-1] + 6*len(check))
+    else:
+        result = len(check)
+        break
+   
+print(result)
 
 

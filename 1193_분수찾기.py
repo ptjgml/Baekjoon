@@ -17,6 +17,8 @@
 # 출력
 # 첫째 줄에 분수를 출력한다.
 
+
+'''
 X = int(input())
 
 n = 1
@@ -33,5 +35,28 @@ else:
     b = X
 
 print(f'{a}/{b}')
+'''
 
 
+
+
+
+#2024.12.23
+
+X = int(input())
+
+line = 1
+
+while X > line:
+    X -= line
+    line += 1
+
+if line % 2 == 0:
+    a = X
+    b = line - X + 1
+
+else:
+    a = line - X + 1
+    b = X
+
+print(f'{a}/{b}')

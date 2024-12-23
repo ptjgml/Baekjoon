@@ -12,6 +12,8 @@
 # 출력
 # 첫째 줄에 10진법 수 N을 B진법으로 출력한다.
 
+
+'''
 num = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
 N, B = map(int,input().split())
@@ -26,5 +28,21 @@ while True:
 
 result = result[::-1]
 print(result)
+'''
 
 
+
+
+#2024.12.23
+
+num = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+
+N, B = map(int, input().split())
+
+result = ''
+
+while N > 0:
+    result += num[N % B]
+    N = N // B
+
+print(result[::-1])

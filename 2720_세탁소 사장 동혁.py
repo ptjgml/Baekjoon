@@ -24,7 +24,7 @@
 # 각 테스트케이스에 대해 필요한 쿼터의 개수, 다임의 개수, 니켈의 개수, 페니의 개수를 공백으로 구분하여 출력한다.
 
 
-
+'''
 T = int(input())
 
 for t in range(T):
@@ -51,6 +51,39 @@ for t in range(T):
         C -= p*1
 
     print(q, d, n, p)
+'''
 
 
+
+
+#2024.12.23
+
+T = int(input())
+
+for i in range(T):
+    C = int(input())
+
+    q = 0
+    d = 0
+    n = 0
+    p = 0
+
+    while C > 0:
+        if C >= 25 : 
+            q += C // 25
+            C %= 25
+
+        elif C >= 10:
+            d += C // 10
+            C %= 10
+        
+        elif C >= 5:
+            n += C // 5
+            C %= 5
+        
+        elif C >= 1:
+            p += C // 1
+            C %= 1
+
+    print(q, d, n, p)
 
