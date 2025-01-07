@@ -20,7 +20,7 @@
 # 첫째 줄에 N의 약수들 중 K번째로 작은 수를 출력한다.
 # 만일 N의 약수의 개수가 K개보다 적어서 K번째 약수가 존재하지 않을 경우에는 0을 출력하시오
 
-
+'''
 N, K = map(int, input().split())
 
 lst = []
@@ -35,3 +35,25 @@ else:
     result = lst[K-1]
 
 print(result)
+'''
+
+
+
+
+
+#2025.01.07
+
+N, K = map(int, input().split())
+measure = 1
+count = 0  # 현재까지 찾은 약수의 개수
+
+while measure <= N:
+    if N % measure == 0:  # measure이 N의 약수라면
+        count += 1
+        if count == K:  # K번째 약수를 찾았다면
+            print(measure)
+            break
+    measure += 1  # measure 값을 항상 증가시킴
+
+if count < K:  # K번째 약수가 없으면
+    print(0)

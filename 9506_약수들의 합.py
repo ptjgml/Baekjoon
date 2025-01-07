@@ -20,7 +20,7 @@
 # n이 완전수가 아니라면 n is NOT perfect. 를 출력한다.
 
 
-
+'''
 while True:
     n = int(input())
     lst = []
@@ -41,3 +41,30 @@ while True:
 
         else:
             print(f'{n} is NOT perfect.')
+'''
+
+
+
+
+
+
+#2025.01.07
+
+
+while True:
+    input_value = int(input())
+
+    if input_value == -1:
+        break
+
+    lst = []
+
+    for i in range(1, input_value):
+        if input_value % i == 0:
+            lst.append(i)
+
+    if sum(lst) == input_value:
+        print(f'{input_value} = {" + ".join(map(str, lst))}')
+
+    else:
+        print(f'{input_value} is NOT perfect.')

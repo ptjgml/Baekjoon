@@ -13,6 +13,8 @@
 
 # 단, M이상 N이하의 자연수 중 소수가 없을 경우는 첫째 줄에 -1을 출력한다.
 
+
+'''
 M = int(input())
 N = int(input())
 
@@ -35,4 +37,31 @@ if len(check_lst) == 0:
 else:
     print(sumV)
     print(check_lst[0])
+'''
 
+
+
+
+#2025.01.07
+
+
+import math
+
+M = int(input())
+N = int(input())
+
+is_prime_lst = [True] * (N+1)
+is_prime_lst[0] = is_prime_lst[1] = False
+
+for i in range(2, int(math.sqrt(N)) + 1):
+    if is_prime_lst[i]:
+        for j in range(i*i, N+1, i):
+            is_prime_lst[j] = False
+
+prime_lst = [num for num in range(M, N+1) if is_prime_lst[num]]
+
+if prime_lst:
+    print(sum(prime_lst))
+    print(prime_lst[0])
+else:
+    print(-1)

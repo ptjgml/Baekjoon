@@ -7,6 +7,8 @@
 # 출력
 # 주어진 수들 중 소수의 개수를 출력한다.
 
+
+'''
 N = int(input())
 
 num_lst = list(map(int, input().split()))
@@ -22,3 +24,27 @@ for num in num_lst:
               
 
 print(one)
+'''
+
+
+
+#2025.01.07
+
+import math
+
+N = int(input())
+num_lst = list(map(int, input().split()))
+
+for i in num_lst:
+    if i == 1:
+        N -= 1
+    elif i == 2 or i == 3:
+        continue
+    else:
+        for j in range(2, int(math.sqrt(i))+1):
+            if i % j == 0:
+                N -= 1
+                break
+
+print(N)
+

@@ -20,7 +20,7 @@
 # 각 테스트 케이스마다 첫 번째 숫자가 두 번째 숫자의 약수라면 factor를,
 # 배수라면 multiple을, 둘 다 아니라면 neither를 출력한다.
 
-
+'''
 while True:
     first, second = map(int, input().split())
     if first == 0 and second == 0:
@@ -38,3 +38,20 @@ while True:
             result = 'neither'
 
     print(result)
+'''
+
+
+
+#2025.01.07
+
+while True:
+    first, second = map(int, input().split())
+    if first == second == 0:
+        break
+    else:
+        if second % first == 0:
+            print('factor')
+        elif first % second == 0:
+            print('multiple')
+        else:
+            print('neither')
