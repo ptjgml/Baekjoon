@@ -35,6 +35,7 @@
 # 첫째 줄에 N 개의 점을 둘러싸는 최소 크기의 직사각형의 넓이를 출력하시오.
 
 
+'''
 N = int(input())
 minX = 1000000
 maxX = -1000000
@@ -56,15 +57,25 @@ else:
         if maxY < y:
             maxY = y
     print((maxX-minX)*(maxY-minY))
+'''
 
 
 
 
+#2025.01.08
 
+N = int(input())
 
+min_x = min_y = 100000
+max_x = max_y = -100000
 
+for i in range(N):
+    x, y = map(int, input().split())
 
+    min_x = min(min_x, x)
+    min_y = min(min_y, y)
+    max_x = max(max_x, x)
+    max_y = max(max_y, y)
 
-
-
+print((max_x - min_x) * (max_y - min_y))
 

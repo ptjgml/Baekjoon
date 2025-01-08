@@ -15,6 +15,8 @@
 # 출력
 # 문제의 설명에 따라 Equilateral, Isosceles, Scalene, Error 중 하나를 출력한다.
 
+
+'''
 result = 'Error'
 dic = {}
 sumV = 0
@@ -36,6 +38,26 @@ if sumV != 180:
     result = 'Error'
 
 print(result)
+'''
 
 
 
+
+#2025.01.08
+
+a1 = int(input())
+a2 = int(input())
+a3 = int(input())
+
+angle = a1 + a2 + a3
+set_angle = set([a1, a2, a3])
+
+if angle == 180:
+    if len(set_angle) == 1:
+        print('Equilateral')
+    elif len(set_angle) == 2:
+        print('Isosceles')
+    elif len(set_angle) == 3:
+        print('Scalene')
+else:
+    print('Error')

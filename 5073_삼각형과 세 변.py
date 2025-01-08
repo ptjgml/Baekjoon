@@ -16,6 +16,8 @@
 # 출력
 # 각 입력에 맞는 결과 (Equilateral, Isosceles, Scalene, Invalid) 를 출력하시오.
 
+
+'''
 while True:
     result = ''
     lst = list(map(int, input().split()))
@@ -33,3 +35,35 @@ while True:
             result = 'Scalene'
 
     print(result)
+'''
+
+
+
+
+
+#2025.01.08
+
+while True:
+    s1, s2, s3 = map(int, input().split())
+
+    if s1 == s2 == s3 == 0:
+        break
+    else:
+        side = s1 + s2 + s3
+        lst_side = sorted([s1, s2, s3])
+        set_side = set(lst_side)
+
+        if lst_side[0] + lst_side[1] <= lst_side[2]:
+            print('Invalid')
+        else:
+            if len(set_side) == 1:
+                print('Equilateral')
+            elif len(set_side) == 2:
+                print('Isosceles')
+            elif len(set_side) == 3:
+                print('Scalene')
+
+
+
+
+

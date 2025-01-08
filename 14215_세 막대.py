@@ -14,7 +14,19 @@
 # 출력
 # 첫째 줄에 만들 수 있는 가장 큰 삼각형의 둘레를 출력한다.
 
+
+'''
 li = sorted(map(int, input().split()))
 res = li[0] + li[1] + min(li[2], li[0]+li[1]-1)
 print(res)
+'''
+
+
+
+#2025.01.08
+
+side_lst = sorted(list(map(int, input().split())))
+result = side_lst[0] + side_lst[1] + min(side_lst[2], side_lst[0] + side_lst[1] - 1)
+print(result)
+
 

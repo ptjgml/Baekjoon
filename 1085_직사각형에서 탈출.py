@@ -9,6 +9,17 @@
 # 출력
 # 첫째 줄에 문제의 정답을 출력한다.
 
+
+'''
 x, y, w, h = map(int, input().split())
 
 print(min(abs(0-x), abs(0-y), abs(w-x), abs(h-y)))
+'''
+
+
+
+#2025.01.08
+
+x, y, w, h = map(int, input().split())
+
+print(min(abs(0-x), abs(0-y), abs(x-w), abs(y-h)))
