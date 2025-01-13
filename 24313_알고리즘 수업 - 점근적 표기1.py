@@ -20,6 +20,8 @@
 # f(n), c, n0가 O(n) 정의를 만족하면 1, 아니면 0을 출력한다.
 
 
+
+'''
 a1, a0 = map(int, input().split())
 
 c = int(input())
@@ -27,3 +29,20 @@ n = int(input())
 
 r=1 if a1*n+a0<=c*n and c>=a1 else 0
 print(r)
+'''
+
+
+
+
+#2025.01.13
+
+
+a1, a0 = map(int, input().split())
+c = int(input())
+n0 = int(input())
+
+if a1*n0 + a0 <= c*n0 and c >= a1:
+    print(1)
+else:
+    print(0)
+
