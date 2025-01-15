@@ -19,6 +19,8 @@
 # 첫째 줄에 N번째 영화의 제목에 들어간 수를 출력한다.
 
 
+
+'''
 import sys
 N = int(sys.stdin.readline())
 
@@ -33,8 +35,20 @@ while True:
     num += 1
 
 print(num)
+'''
 
 
 
 
+#2025.01.15
 
+N = int(input())
+
+num = 666
+
+while N:
+    if '666' in str(num):
+        N -= 1
+    num += 1
+
+print(num-1)

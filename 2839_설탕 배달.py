@@ -36,7 +36,7 @@
 #     print(min(lst)) 
 # ----------------------------------------------------------------
 
-
+'''
 N = int(input())
 count = 0
 
@@ -56,14 +56,29 @@ while N > 0:
         break
 
 print(count)
+'''
 
 
 
 
 
 
+#2025.01.15
 
+N = int(input())
 
+result = 10e9
+
+for i in range(0, N//3 + 1):
+    remain = (N - 3 * i)
+
+    if remain % 5 == 0:
+        result = min(result, int(remain // 5) + i)
+
+if result == 10e9:
+    result = -1
+
+print(result)
 
 
 

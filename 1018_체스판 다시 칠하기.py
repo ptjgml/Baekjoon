@@ -21,6 +21,8 @@
 # 출력
 # 첫째 줄에 지민이가 다시 칠해야 하는 정사각형 개수의 최솟값을 출력한다.
 
+
+'''
 def first_B(i, j, cnt, check_board):
     if check_board[i][j] == 'W':
         cnt += 1
@@ -78,5 +80,60 @@ for i in range(0, N - 8 + 1):
             count = min(result1, result2)
 
 print(count)
+'''
 
 
+
+
+#2025.01.15
+def start_W(i, j, cnt, check_board):
+    if check_board[i][j] == 'B':
+        cnt += 1
+        check_board[i][j] = 'W'
+    return check(i, j, cnt, check_board)
+
+def start_B(i, j, cnt, check_board):
+    if check_board[i][j] == 'W':
+        cnt += 1
+        check_board[i][j] = 'B'
+    return check(i, j, cnt, check_board)
+
+def check(i, j, cnt, check_board):
+
+    for a in range(i, i+8):
+        for b in range(j, j+8):
+            for k in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
+                new_a = a + k[0]
+                new_b = b + k[1]
+
+                if check_board[a][b] == 'B':
+                    if i <= new_a < i+8 and j <= new_b < j+8:
+                        if check_board[new_a][new_b] == 'B':
+                            cnt += 1
+                            check_board[new_a][new_b] = 'W'
+
+                if check_board[a][b] == 'W':
+                    if i <= new_a < i+8 and j <= new_b < j+8:
+                        if check_board[new_a][new_b] == 'W':
+                            cnt += 1
+                            check_board[new_a][new_b] = 'B'
+
+    return cnt
+
+
+import copy
+
+N, M = map(int, input().split())
+board = [list(input()) for _ in range(N)]
+result = 10e9
+
+for i in range(0, N-8+1):
+    for j in range(0, M-8+1):
+        check_board = copy.deepcopy(board)
+        result1 = start_W(i, j, 0, check_board)
+        check_board = copy.deepcopy(board)
+        result2 = start_B(i, j, 0, check_board)
+
+        result = min(result, result1, result2)
+
+print(result)

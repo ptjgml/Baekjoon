@@ -12,6 +12,8 @@
 # 출력
 # 첫째 줄에 답을 출력한다. 생성자가 없는 경우에는 0을 출력한다.
 
+
+'''
 N = int(input())
 
 c = N
@@ -28,6 +30,25 @@ while c > 0:
 
 if result == 10e9:
     result = 0
+
+print(result)
+'''
+
+
+
+
+#2025.01.13
+
+N = int(input())
+result = 0
+
+for i in range(1, N):
+    num = str(i)
+    check = sum(int(a) for a in num) + i
+
+    if check == N:
+        result = i
+        break
 
 print(result)
 
