@@ -9,6 +9,8 @@
 # 출력
 # 첫째 줄부터 N개의 줄에 오름차순으로 정렬한 결과를 한 줄에 하나씩 출력한다.
 
+
+'''
 import sys
 
 N = int(sys.stdin.readline())
@@ -19,3 +21,24 @@ for i in range(N):
 lst.sort()
 for j in lst:
     print(j)   
+'''    
+
+
+
+
+
+#2025.02.03
+
+import sys
+
+N = int(sys.stdin.readline())
+
+num_lst = list()
+
+for i in range(N):
+    num = int(sys.stdin.readline())
+    num_lst.append(num)
+
+num_lst.sort()
+
+print(*num_lst, sep='\n')

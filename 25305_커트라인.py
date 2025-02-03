@@ -23,6 +23,8 @@
 # $1 ≤ k ≤ N$ 
 # $0 ≤ x ≤ 10\,000$ 
 
+
+'''
 N, k = map(int, input().split())
 
 score_lst = list(map(int, input().split()))
@@ -30,3 +32,15 @@ score_lst = list(map(int, input().split()))
 score_lst.sort(reverse=True)
 
 print(score_lst[k-1])
+'''
+
+
+
+#2025.02.03
+
+N, k = map(int, input().split())
+score_lst = list(map(int, input().split()))
+
+score_lst.sort()
+
+print(score_lst[N-k])

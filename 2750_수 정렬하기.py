@@ -52,7 +52,7 @@
     
 
 
-
+'''
 # ------------- sort 쓰는 법 ----------------
 import sys
 N = int(sys.stdin.readline())
@@ -64,4 +64,26 @@ for i in range(N):
 lst.sort()
 for i in lst:
     print(i)
+'''
 
+
+
+
+
+
+
+
+
+#2025.02.03
+
+N = int(input())
+
+num_lst = list()
+
+for i in range(N):
+    num = int(input())
+    num_lst.append(num)
+
+num_lst.sort()
+
+print(*num_lst, sep='\n')

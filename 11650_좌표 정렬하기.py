@@ -13,6 +13,8 @@
 # 출력
 # 첫째 줄부터 N개의 줄에 점을 정렬한 결과를 출력한다.
 
+
+'''
 # sort 쓰는 법
 import sys
 N = int(sys.stdin.readline())
@@ -25,8 +27,10 @@ for i in range(N):
 lst.sort()
 for i in range(N):
     print(lst[i][0], lst[i][1])
+'''
 
 
+'''
 # sort 안쓰는 법
 # for x in range(N-1,0,-1):
 #     maxIdx = x
@@ -40,3 +44,27 @@ for i in range(N):
 
 # for i in range(N):
 #     print(lst[i][0], lst[i][1])
+'''
+
+
+
+
+
+
+#2025.02.03
+
+N = int(input())
+lst = list()
+
+for i in range(N):
+    xy = list(map(int, input().split()))
+    lst.append(xy)
+
+lst.sort(key=lambda x : (x[0], x[1]))
+
+for j in range(N):
+    print(lst[j][0], lst[j][1])
+
+
+
+

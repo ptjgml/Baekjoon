@@ -46,7 +46,7 @@ print(*index_lst)
  
 '''
 
-
+'''
 import sys
 N = int(sys.stdin.readline())
 lst = list(map(int, sys.stdin.readline().split()))
@@ -59,5 +59,23 @@ for i in range(len(new_lst)):
 
 for j in lst:
     print(index_dic[j], end=' ')
+'''
 
 
+
+
+
+
+
+#2025.02.03
+
+import sys 
+
+N = int(sys.stdin.readline())
+
+lst = list(map(int, sys.stdin.readline().split()))
+
+new_lst = sorted(set(lst))
+index_map = {value : idx for idx, value in enumerate(new_lst)}
+
+print(*[index_map[num] for num in lst])

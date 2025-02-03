@@ -13,6 +13,8 @@
 # 출력
 # 첫째 줄부터 N개의 줄에 점을 정렬한 결과를 출력한다.
 
+
+'''
 # sort 쓰는 법
 import sys
 N = int(input())
@@ -26,7 +28,22 @@ lst.sort()
 
 for i in range(N):
     print(lst[i][1], lst[i][0])
+'''
 
 
 
+
+#2025.02.03
+
+N = int(input())
+lst = list()
+
+for i in range(N):
+    xy = list(map(int, input().split()))
+    lst.append(xy)
+
+lst.sort(key=lambda x : (x[1], x[0]))
+
+for j in range(N):
+    print(lst[j][0], lst[j][1])
 

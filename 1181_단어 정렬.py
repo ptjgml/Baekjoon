@@ -15,7 +15,7 @@
 # 출력
 # 조건에 따라 정렬하여 단어들을 출력한다.
 
-
+'''
 import sys
 N = int(input())
 
@@ -31,3 +31,19 @@ sort_set.sort(key = lambda x : len(x))  # 길이 순으로 정렬
 
 for word in sort_set:
     print(word)
+'''
+
+
+
+#2025.02.03
+
+N = int(input())
+word_set = set()
+
+for i in range(N):
+    word = input()
+    word_set.add(word)
+
+word_set = sorted(word_set, key=lambda x : (len(x), x))
+
+print(*word_set, sep='\n')

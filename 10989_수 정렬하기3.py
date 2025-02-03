@@ -29,6 +29,7 @@ for j in lst:
 - 해당 수가 입력된 수를 count 하여 출력한다.
 '''
 
+'''
 import sys
 N = int(input())
 dic = {}
@@ -45,5 +46,27 @@ dic_keys = sorted(dic.keys())
 for j in dic_keys:
     for k in range(dic[j]):
         print(j)
+'''
+
+
+
+
+
+#2025.02.03
+
+import sys
+
+N = int(sys.stdin.readline())
+
+num_dic = dict()
+
+for i in range(N):
+    num = int(sys.stdin.readline())
+    num_dic[num] = num_dic.get(num, 0) +1
+
+for num in sorted(num_dic.keys()):
+    for j in range(num_dic[num]):
+        print(num)
+
 
 

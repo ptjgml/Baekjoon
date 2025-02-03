@@ -16,6 +16,8 @@
 # 나이 순, 나이가 같으면 가입한 순으로 
 # 한 줄에 한 명씩 나이와 이름을 공백으로 구분해 출력한다.
 
+
+'''
 N = int(input())
 
 lst = []
@@ -28,3 +30,22 @@ new_lst = sorted(lst, key = lambda x : x[0])
 
 for i in range(N):
     print(new_lst[i][0], new_lst[i][1])
+'''
+
+
+
+
+
+#2025.02.03
+
+N = int(input())
+lst = list()
+
+for i in range(N):
+    age, name = input().split()
+    lst.append((int(age), name))
+
+lst.sort(key=lambda x : x[0])
+
+for j in range(N):
+    print(lst[j][0], lst[j][1])

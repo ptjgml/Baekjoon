@@ -9,6 +9,7 @@
 # 출력
 # 첫째 줄에 자리수를 내림차순으로 정렬한 수를 출력한다.
 
+'''
 N = input()
 lst = []
 
@@ -26,6 +27,17 @@ for i in range(len(lst)-1,0,-1):
 
 num = ''.join(lst)
 print(num)
+'''
+
+
+
+
+
+
+#2025.02.03
+
+N = input()
+print(''.join(sorted(N, reverse=True)))
 
 
 
