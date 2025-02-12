@@ -18,7 +18,7 @@
 
 # 이게 오박사님이 나에게 새로 주시려고 하는 도감이야. 너무 가지고 싶다ㅠㅜ. 꼭 만점을 받아줬으면 좋겠어!! 파이팅!!!
 
-
+'''
 import sys
 N, M = map(int,sys.stdin.readline().split())
 
@@ -30,9 +30,26 @@ for i in range(M):
         print(lst[int(inputV)])
     else:
         print(lst.index(inputV))
+'''
 
 
 
+#2025.02.12
+
+import sys
+
+N, M = map(int, sys.stdin.readline().split())
+
+pocketmon_dic = dict()
+
+for i in range(N):
+    pocketmon = sys.stdin.readline().strip()
+    pocketmon_dic[str(i+1)] = pocketmon
+    pocketmon_dic[pocketmon] = str(i+1)
+
+for _ in range(M):
+    inputthing = sys.stdin.readline().strip()
+    print(pocketmon_dic[inputthing])
 
 
 

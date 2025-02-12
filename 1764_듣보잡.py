@@ -12,6 +12,7 @@
 # 출력
 # 듣보잡의 수와 그 명단을 사전순으로 출력한다.
 
+'''
 import sys
 
 N, M = map(int, sys.stdin.readline().split())
@@ -30,4 +31,28 @@ print(len(result))
 
 for k in result:
     print(k)
+'''
+
+
+
+
+
+#2025.02.12
+
+N, M = map(int, input().split())
+no_hear = set()
+result = set()
+
+for i in range(N):
+    no_hear.add(input())
+
+for j in range(M):
+    no_see = input()
+    if no_see in no_hear:
+        result.add(no_see)
+
+result = sorted(result)
+
+print(len(result))
+print('\n'.join(result))
 

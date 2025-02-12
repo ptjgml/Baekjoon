@@ -17,6 +17,7 @@
 # 출력
 # 현재 회사에 있는 사람의 이름을 사전 순의 역순으로 한 줄에 한 명씩 출력한다.
 
+'''
 n = int(input())
 dic = {}
 for i in range(n):
@@ -33,3 +34,25 @@ dic = sorted(dic, reverse=True)
 
 for na in dic:
     print(na)
+ '''   
+
+
+
+
+
+#2025.02.12
+
+
+n = int(input())
+
+check = set()
+
+for i in range(n):
+    name, state = input().split()
+    if state == 'leave':
+        check.discard(name)
+    elif state == 'enter':
+        check.add(name)
+
+check = sorted(check, reverse=True)
+print('\n'.join(check))

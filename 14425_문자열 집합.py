@@ -16,7 +16,7 @@
 # 출력
 # 첫째 줄에 M개의 문자열 중에 총 몇 개가 집합 S에 포함되어 있는지 출력한다.
 
-
+'''
 N, M = map(int, input().split())
 
 S = [input() for _ in range(N)]
@@ -28,3 +28,28 @@ for i in range(M):
         count += 1
 
 print(count)
+'''
+
+
+
+
+
+
+
+#2025.02.12
+
+N, M = map(int, input().split())
+N_set = set()
+cnt = 0
+
+for i in range(N):
+    word = input()
+    N_set.add(word)
+
+for j in range(M):
+    input_word = input()
+    if input_word in N_set:
+        cnt += 1
+
+print(cnt)
+

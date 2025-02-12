@@ -12,6 +12,9 @@
 # 출력
 # 첫째 줄에 S의 서로 다른 부분 문자열의 개수를 출력한다.
 
+
+
+'''
 S = list(input())
 dic = {}
 for i in range(1, len(S)+1):
@@ -26,3 +29,17 @@ for i in range(1, len(S)+1):
         a += 1
 
 print(len(dic))
+'''
+
+
+
+#2025.02.12
+
+S = list(input())
+S_set = set()
+
+for i in range(1, len(S)+1):
+    for s in range(0,len(S) - i + 1):
+        S_set.add(''.join(S[s:s+i]))
+
+print(len(S_set))

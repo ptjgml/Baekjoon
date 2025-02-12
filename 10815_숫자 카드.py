@@ -17,6 +17,8 @@
 # 첫째 줄에 입력으로 주어진 M개의 수에 대해서,
 # 각 수가 적힌 숫자 카드를 상근이가 가지고 있으면 1을, 아니면 0을 공백으로 구분해 출력한다.
 
+
+'''
 N = int(input())
 s_card = set(map(int, input().split()))
 M = int(input())
@@ -24,6 +26,27 @@ card = list(map(int, input().split()))
 
 for i in range(M):
     if card[i] in s_card:
+        print(1, end=' ')
+    else:
+        print(0, end=' ')
+'''     
+
+
+
+
+
+
+
+#2025.02.12
+
+N = int(input())
+sang_have = set(map(int, input().split()))
+
+M = int(input())
+check = list(map(int, input().split()))
+
+for num in check:
+    if num in sang_have:
         print(1, end=' ')
     else:
         print(0, end=' ')

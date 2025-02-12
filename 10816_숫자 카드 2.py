@@ -15,6 +15,8 @@
 # 첫째 줄에 입력으로 주어진 M개의 수에 대해서,
 # 각 수가 적힌 숫자 카드를 상근이가 몇 개 가지고 있는지를 공백으로 구분해 출력한다.
 
+
+'''
 N = int(input())
 s_card = list(map(int, input().split()))
 M = int(input())
@@ -31,6 +33,20 @@ for j in range(M):
         print(dict[card[j]], end=' ')
     else:
         print(0, end=' ')
+'''
 
 
+
+#2025.02.12
+
+from collections import Counter
+
+N = int(input())
+sanggen_lst = list(map(int, input().split()))
+sanggen_have = Counter(sanggen_lst)
+
+M = int(input())
+check = list(map(int, input().split()))
+for check_num in check:
+    print(sanggen_have.get(check_num, 0) , end=' ')
 
