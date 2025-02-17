@@ -22,7 +22,7 @@
 #             print(num)
 
 
-
+'''
 # 에라토스테네스의 체 방법
 import sys
 M, N = map(int, sys.stdin.readline().split())
@@ -37,6 +37,25 @@ for i in range(2, int(N ** 0.5)+1):
 
 for k in range(M, N+1):
     if check_lst[k] == 0:
+        print(k)
+'''
+
+
+
+
+#2025.02.17
+
+M, N = map(int, input().split())
+lst = [True for _ in range(N+1)]
+lst[0] = False
+lst[1] = False
+
+for i in range(2, int(N ** 0.5) + 1):
+    for j in range(i*2, N+1, i):
+        lst[j] = False
+
+for k in range(M, N+1):
+    if lst[k]:
         print(k)
 
 

@@ -43,3 +43,4 @@ for i in range(1, len(S)+1):
         S_set.add(''.join(S[s:s+i]))
 
 print(len(S_set))
+
