@@ -11,9 +11,39 @@
 # 출력
 # 첫째 줄에 괄호를 적절히 추가해서 얻을 수 있는 결과의 최댓값을 출력한다. 정답은 231보다 작고, -231보다 크다.
 
-N = int(input())
-inputV = input()
 
-for i in range(N):
-    if inputV[i].isdigit():
+N = int(input())
+exp = list(input())  # 문자열 하나씩 분리
+result = -1e9
+
+def cal(num1, num2, ops):
+    if ops == '+':
+        return num1 + num2
+
+    elif ops == '-':
+        return num1 - num2
+    
+    elif ops == '*':
+        return num1 * num2
+
+
+def dfs(idx, now_num):
+    global result
+
+    if N - 1 <= idx:
+        result = max(result, int(now_num))
+        return
+    
+    if idx + 2 < N: #괄호 사용하지 않을 때때
+        dfs(idx + 2, cal(now_num, int(exp[idx+2]), exp[idx+1]))
+
+    if idx + 4 < N: #괄호 사용할 때 
+        dfs(idx+4, cal(now_num, cal(int(exp[idx+2]), int(exp[idx+4]), exp[idx+3]) , exp[idx+1]))
+    
+    if idx + 1 == N - 1:    # 남은 게 연산자 하나 + 숫자 하나일 때
+        dfs(N, cal(now_num, int(exp[idx+1]), exp[idx]))
         
+
+
+dfs(0, int(exp[0]))
+print(result)

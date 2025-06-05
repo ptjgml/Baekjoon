@@ -30,7 +30,7 @@
 # 첫째 줄에 백준이가 얻을 수 있는 최대 이익을 출력한다.
 
 
-
+'''
 N = int(input())
 
 day_lst = [0] * (N+1)
@@ -41,6 +41,28 @@ for i in range(1, N+1):
     if i + day_lst[i] > (N+1):
         day_lst[i] = 0
         money_lst[i] = 0
+'''
+
+
+
+
+
+N = int(input())
+counsel = [tuple(map(int, input().split())) for _ in range(N)]
+dp = [0] * (N + 1)
+
+for i in range(N):
+    t, p = counsel[i]
+    
+    # 현재 날짜(i)까지의 최대 이익을 다음 날로 넘겨주기 (상담 안 할 수도 있으니까)
+    dp[i + 1] = max(dp[i + 1], dp[i])
+    
+    # 상담을 했을 때 퇴사일 넘지 않는 경우
+    if i + t <= N:
+        dp[i + t] = max(dp[i + t], dp[i] + p)
+    print(i, dp)
+
+print(max(dp))
 
 
 
