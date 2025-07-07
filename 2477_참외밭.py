@@ -34,3 +34,26 @@
 
 # 출력
 # 첫째 줄에 입력으로 주어진 밭에서 자라는 참외의 수를 출력한다.
+
+K = int(input())
+EW = []
+SN = []
+total = []
+
+for i in range(6):
+    di, length = map(int, input().split())
+
+    if di == 1 or di == 2:
+        EW.append(length)
+    else:
+        SN.append(length)
+
+    total.append(length)
+
+w_max = max(EW)
+h_max = max(SN)
+
+w_min = total[total.index(h_max) - 3]
+h_min = total[total.index(w_max) - 3]
+
+print(K * ((w_max*h_max) - (w_min*h_min)))
