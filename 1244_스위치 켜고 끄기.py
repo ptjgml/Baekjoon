@@ -56,7 +56,7 @@
 
 
 
-
+'''
 switch_num = int(input())
 
 status = list(map(int, input().split()))
@@ -103,9 +103,50 @@ for i in range(len(status)):
     if count == 20:
         print()
         count = 0
+'''
 
 
 
+
+#2025.07.29
+
+
+N = int(input())
+
+switch = list(map(int, input().split()))
+switch.insert(0, N)
+student_cnt = int(input())
+
+for i in range(student_cnt):
+    s, num = map(int, input().split())
+
+    if s == 1:
+        for n in range(num, N+1, num):
+            switch[n] = 1 - switch[n]
+
+    else:
+        check_idx = 0
+        # cnt = 1
+        max_idx = check_idx
+
+        while num - check_idx > 0 and num + check_idx < N+1:
+            if switch[num-check_idx] == switch[num+check_idx]:
+                max_idx = check_idx
+                check_idx += 1
+
+
+            else:
+                check_idx -= 1
+                break
+
+        for m in range(num - max_idx, num + max_idx + 1):
+            switch[m] = 1 - switch[m]
+
+
+for i in range(1, N + 1):
+    print(switch[i], end=' ')
+    if i % 20 == 0:
+        print()
 
 
 
