@@ -17,6 +17,9 @@
 #
 # 출력
 # 첫째 줄에 남게 되는 카드의 번호를 출력한다.
+
+
+'''
 from collections import deque
 N = int(input())
 
@@ -28,6 +31,23 @@ while len(Q) > 1:
     Q.append(a)
 
 print(Q[-1])
+'''
+
+
+
+#2025.07.31
+
+from collections import deque
+
+N = int(input())
+
+Q = deque(i for i in range(1, N+1))
+
+while len(Q) > 1:
+    Q.popleft()
+    Q.append(Q.popleft())
+
+print(Q.popleft())
 
 
 
