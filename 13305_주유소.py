@@ -32,7 +32,7 @@
 # 출력
 # 표준 출력으로 제일 왼쪽 도시에서 제일 오른쪽 도시로 가는 최소 비용을 출력한다.
 
-
+'''
 N = int(input())
 
 length = list(map(int, input().split()))
@@ -48,12 +48,23 @@ for l in range(len(length)):
     result += (length[l] * curP)
 
 print(result)
+'''
 
 
 
 
+N = int(input())
+road_length = list(map(int, input().split()))
+oil_price = list(map(int, input().split()))
 
+min_oil = oil_price[0]
 
+result = 0
+for idx, r in enumerate(road_length):
+    min_oil = min(min_oil, oil_price[idx])
+    result += (r * min_oil)
+
+print(result)
 
 
 
